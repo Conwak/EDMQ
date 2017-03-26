@@ -1,0 +1,53 @@
+Mono path[0] = 'E:/FPS_LowFed_Project/FPS_8Bit_Project_Network/Fps_8Bit_Project/Builds/MP_Test/Fid_Data/Managed'
+Mono path[1] = 'E:/FPS_LowFed_Project/FPS_8Bit_Project_Network/Fps_8Bit_Project/Builds/MP_Test/Fid_Data/Mono'
+Mono config path = 'E:/FPS_LowFed_Project/FPS_8Bit_Project_Network/Fps_8Bit_Project/Builds/MP_Test/Fid_Data/Mono/etc'
+PlayerConnection initialized from E:/FPS_LowFed_Project/FPS_8Bit_Project_Network/Fps_8Bit_Project/Builds/MP_Test/Fid_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55309
+Multi-casting "[IP] 192.168.1.121 [Port] 55309 [Flags] 2 [Guid] 1020410860 [EditorId] 2543347255 [Version] 1048832 [Id] WindowsPlayer(Connor) [Debug] 0" to [225.0.0.222:54997]...
+PlayerConnection already initialized - listening to [192.168.1.121:55309]
+Initialize engine version: 5.4.0f3 (a6d8d714de6f)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 970 (ID=0x13c2)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: E:\FPS_LowFed_Project\FPS_8Bit_Project_Network\Fps_8Bit_Project\Builds\MP_Test\Fid_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading E:\FPS_LowFed_Project\FPS_8Bit_Project_Network\Fps_8Bit_Project\Builds\MP_Test\Fid_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: E:\FPS_LowFed_Project\FPS_8Bit_Project_Network\Fps_8Bit_Project\Builds\MP_Test\Fid_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading E:\FPS_LowFed_Project\FPS_8Bit_Project_Network\Fps_8Bit_Project\Builds\MP_Test\Fid_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: E:\FPS_LowFed_Project\FPS_8Bit_Project_Network\Fps_8Bit_Project\Builds\MP_Test\Fid_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading E:\FPS_LowFed_Project\FPS_8Bit_Project_Network\Fps_8Bit_Project\Builds\MP_Test\Fid_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: E:\FPS_LowFed_Project\FPS_8Bit_Project_Network\Fps_8Bit_Project\Builds\MP_Test\Fid_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading E:\FPS_LowFed_Project\FPS_8Bit_Project_Network\Fps_8Bit_Project\Builds\MP_Test\Fid_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: E:\FPS_LowFed_Project\FPS_8Bit_Project_Network\Fps_8Bit_Project\Builds\MP_Test\Fid_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading E:\FPS_LowFed_Project\FPS_8Bit_Project_Network\Fps_8Bit_Project\Builds\MP_Test\Fid_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: E:\FPS_LowFed_Project\FPS_8Bit_Project_Network\Fps_8Bit_Project\Builds\MP_Test\Fid_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading E:\FPS_LowFed_Project\FPS_8Bit_Project_Network\Fps_8Bit_Project\Builds\MP_Test\Fid_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.067 seconds
+Platform assembly: E:\FPS_LowFed_Project\FPS_8Bit_Project_Network\Fps_8Bit_Project\Builds\MP_Test\Fid_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: E:\FPS_LowFed_Project\FPS_8Bit_Project_Network\Fps_8Bit_Project\Builds\MP_Test\Fid_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 3520x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+The referenced script on this Behaviour (Game Object 'Collider') is missing!
+ 
+(Filename: C:/buildslave/unity/build/Runtime/Mono/MonoBehaviour.cpp Line: 1656)
+
+UnloadTime: 0.995600 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 3fbc -> priority: 1 
+  Thread -> id: 4834 -> priority: 1 
+MatchMakingClient Create :https://mm.unet.unity3d.com/json/reply/CreateMatchRequest
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+UnityEngine.Networking.Match.NetworkMatch:CreateMatch(CreateMatchRequest, DataResponseDelegate`1) (at C:\buildslave\unity\build\Runtime\Networking\Managed\MatchMakingClient.cs:146)
+UnityEngine.Networking.Match.NetworkMatch:CreateMatch(String, UInt32, Boolean, String, String, String, Int32, Int32, DataResponseDelegate`1) (at C:\buildslave\unity\build\Runtime\Networking\Managed\MatchMakingClient.cs:133)
+UnityEngine.Networking.NetworkManagerHUD:OnGUI() (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManagerHUD.cs:189)
+ 
+(Filename: C:/buildslave/unity/build/Runtime/Networking/Managed/MatchMakingClient.cs Line: 146)
+

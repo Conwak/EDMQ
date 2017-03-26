@@ -1,0 +1,506 @@
+fileFormatVersion: 2
+guid: b405e0fdcb928ec47b85d33b89df5baa
+timeCreated: 1490033163
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Golem:Head
+    100002: Golem:HeadTop_End
+    100004: Golem:Hips
+    100006: Golem:LeftArm
+    100008: Golem:LeftFoot
+    100010: Golem:LeftForeArm
+    100012: Golem:LeftHand
+    100014: Golem:LeftLeg
+    100016: Golem:LeftShoulder
+    100018: Golem:LeftToe_End
+    100020: Golem:LeftToeBase
+    100022: Golem:LeftUpLeg
+    100024: Golem:Neck
+    100026: Golem:RightArm
+    100028: Golem:RightFoot
+    100030: Golem:RightForeArm
+    100032: Golem:RightHand
+    100034: Golem:RightLeg
+    100036: Golem:RightShoulder
+    100038: Golem:RightToe_End
+    100040: Golem:RightToeBase
+    100042: Golem:RightUpLeg
+    100044: Golem:Spine
+    100046: Golem:Spine1
+    100048: Golem:Spine2
+    100050: //RootNode
+    400000: Golem:Head
+    400002: Golem:HeadTop_End
+    400004: Golem:Hips
+    400006: Golem:LeftArm
+    400008: Golem:LeftFoot
+    400010: Golem:LeftForeArm
+    400012: Golem:LeftHand
+    400014: Golem:LeftLeg
+    400016: Golem:LeftShoulder
+    400018: Golem:LeftToe_End
+    400020: Golem:LeftToeBase
+    400022: Golem:LeftUpLeg
+    400024: Golem:Neck
+    400026: Golem:RightArm
+    400028: Golem:RightFoot
+    400030: Golem:RightForeArm
+    400032: Golem:RightHand
+    400034: Golem:RightLeg
+    400036: Golem:RightShoulder
+    400038: Golem:RightToe_End
+    400040: Golem:RightToeBase
+    400042: Golem:RightUpLeg
+    400044: Golem:Spine
+    400046: Golem:Spine1
+    400048: Golem:Spine2
+    400050: //RootNode
+    7400000: idle
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'Golem:Spine2' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle
+      takeName: mixamo.com
+      firstFrame: 0
+      lastFrame: 240
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Golem:Hips
+        weight: 1
+      - path: Golem:Hips/Golem:LeftUpLeg
+        weight: 1
+      - path: Golem:Hips/Golem:LeftUpLeg/Golem:LeftLeg
+        weight: 1
+      - path: Golem:Hips/Golem:LeftUpLeg/Golem:LeftLeg/Golem:LeftFoot
+        weight: 1
+      - path: Golem:Hips/Golem:LeftUpLeg/Golem:LeftLeg/Golem:LeftFoot/Golem:LeftToeBase
+        weight: 1
+      - path: Golem:Hips/Golem:LeftUpLeg/Golem:LeftLeg/Golem:LeftFoot/Golem:LeftToeBase/Golem:LeftToe_End
+        weight: 0
+      - path: Golem:Hips/Golem:RightUpLeg
+        weight: 1
+      - path: Golem:Hips/Golem:RightUpLeg/Golem:RightLeg
+        weight: 1
+      - path: Golem:Hips/Golem:RightUpLeg/Golem:RightLeg/Golem:RightFoot
+        weight: 1
+      - path: Golem:Hips/Golem:RightUpLeg/Golem:RightLeg/Golem:RightFoot/Golem:RightToeBase
+        weight: 1
+      - path: Golem:Hips/Golem:RightUpLeg/Golem:RightLeg/Golem:RightFoot/Golem:RightToeBase/Golem:RightToe_End
+        weight: 0
+      - path: Golem:Hips/Golem:Spine
+        weight: 1
+      - path: Golem:Hips/Golem:Spine/Golem:Spine1
+        weight: 1
+      - path: Golem:Hips/Golem:Spine/Golem:Spine1/Golem:Spine2
+        weight: 1
+      - path: Golem:Hips/Golem:Spine/Golem:Spine1/Golem:Spine2/Golem:LeftShoulder
+        weight: 1
+      - path: Golem:Hips/Golem:Spine/Golem:Spine1/Golem:Spine2/Golem:LeftShoulder/Golem:LeftArm
+        weight: 1
+      - path: Golem:Hips/Golem:Spine/Golem:Spine1/Golem:Spine2/Golem:LeftShoulder/Golem:LeftArm/Golem:LeftForeArm
+        weight: 1
+      - path: Golem:Hips/Golem:Spine/Golem:Spine1/Golem:Spine2/Golem:LeftShoulder/Golem:LeftArm/Golem:LeftForeArm/Golem:LeftHand
+        weight: 1
+      - path: Golem:Hips/Golem:Spine/Golem:Spine1/Golem:Spine2/Golem:Neck
+        weight: 1
+      - path: Golem:Hips/Golem:Spine/Golem:Spine1/Golem:Spine2/Golem:Neck/Golem:Head
+        weight: 1
+      - path: Golem:Hips/Golem:Spine/Golem:Spine1/Golem:Spine2/Golem:Neck/Golem:Head/Golem:HeadTop_End
+        weight: 0
+      - path: Golem:Hips/Golem:Spine/Golem:Spine1/Golem:Spine2/Golem:RightShoulder
+        weight: 1
+      - path: Golem:Hips/Golem:Spine/Golem:Spine1/Golem:Spine2/Golem:RightShoulder/Golem:RightArm
+        weight: 1
+      - path: Golem:Hips/Golem:Spine/Golem:Spine1/Golem:Spine2/Golem:RightShoulder/Golem:RightArm/Golem:RightForeArm
+        weight: 1
+      - path: Golem:Hips/Golem:Spine/Golem:Spine1/Golem:Spine2/Golem:RightShoulder/Golem:RightArm/Golem:RightForeArm/Golem:RightHand
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: Golem:Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Golem:RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Golem@idle(Clone)
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:Hips
+      position: {x: -0.0010636477, y: 0.48895732, z: -0.000021055936}
+      rotation: {x: -0.11507465, y: 0.11732419, z: -0.02549842, w: 0.98607445}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:LeftUpLeg
+      position: {x: -0.08418899, y: -0.031666998, z: -0.001606}
+      rotation: {x: -0.09722663, y: -0.014554517, z: 0.99442273, w: 0.03819068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:LeftLeg
+      position: {x: -0, y: 0.23405, z: 0}
+      rotation: {x: -0.33136764, y: -0.12788308, z: 0.08001591, w: 0.931364}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:LeftFoot
+      position: {x: -0, y: 0.185662, z: 0}
+      rotation: {x: 0.7444338, y: -0.041150827, z: -0.076804906, w: 0.66198635}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:LeftToeBase
+      position: {x: -0, y: 0.15715, z: 0}
+      rotation: {x: 0.29313958, y: 0.0067388033, z: 0.019814154, w: 0.9558406}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:LeftToe_End
+      position: {x: -0, y: 0.068625, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:RightUpLeg
+      position: {x: 0.08418899, y: -0.031666998, z: -0.001341}
+      rotation: {x: 0.12801962, y: -0.012268265, z: 0.9791473, w: -0.15726097}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:RightLeg
+      position: {x: -0, y: 0.234443, z: 0}
+      rotation: {x: -0.3179064, y: -0.052820943, z: -0.014031662, w: 0.94654566}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:RightFoot
+      position: {x: -0, y: 0.185629, z: 0}
+      rotation: {x: 0.68855524, y: 0.05868599, z: -0.17168747, w: 0.70211905}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:RightToeBase
+      position: {x: -0, y: 0.148055, z: 0}
+      rotation: {x: 0.30531284, y: -0.024857834, z: 0.008718242, w: 0.95188767}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:RightToe_End
+      position: {x: -0, y: 0.067954, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:Spine
+      position: {x: -0, y: 0.057016, z: 0.0013860001}
+      rotation: {x: 0.06253334, y: -0.04039728, z: 0.00930918, w: 0.99718153}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:Spine1
+      position: {x: -0, y: 0.066538, z: 0}
+      rotation: {x: 0.100635864, y: -0.08063299, z: 0.02052966, w: 0.991438}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:Spine2
+      position: {x: -0, y: 0.076044, z: 0}
+      rotation: {x: 0.10063595, y: -0.08063289, z: 0.020529661, w: 0.991438}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:LeftShoulder
+      position: {x: -0.06250899, y: 0.072193, z: -0.000006}
+      rotation: {x: 0.5745772, y: -0.42730406, z: 0.5413469, w: 0.44069943}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:LeftArm
+      position: {x: -0, y: 0.128029, z: 0}
+      rotation: {x: -0.12550282, y: 0.17128095, z: -0.08516663, w: 0.9734776}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:LeftForeArm
+      position: {x: -0, y: 0.176838, z: 0}
+      rotation: {x: -0.014518162, y: -0.05715972, z: -0.024505664, w: 0.9979587}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:LeftHand
+      position: {x: -0, y: 0.136788, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:Neck
+      position: {x: -0, y: 0.085549, z: 0}
+      rotation: {x: -0.049702104, y: 0.011005028, z: -0.0023499548, w: 0.99870074}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:Head
+      position: {x: -0, y: 0.039003, z: 0.001939}
+      rotation: {x: -0.054420616, y: -0.17696542, z: 0.01293953, w: 0.9826262}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:HeadTop_End
+      position: {x: -0, y: 0.136068, z: 0.006765}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:RightShoulder
+      position: {x: 0.06250899, y: 0.072209, z: 0.000655}
+      rotation: {x: 0.6005553, y: 0.42124635, z: -0.5290137, w: 0.42664897}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:RightArm
+      position: {x: -0, y: 0.128029, z: 0}
+      rotation: {x: -0.09425795, y: -0.054741375, z: -0.12132375, w: 0.9866101}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:RightForeArm
+      position: {x: -0, y: 0.17683999, z: 0}
+      rotation: {x: -0.012750843, y: -0.037069723, z: 0.028560538, w: 0.99882317}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Golem:RightHand
+      position: {x: -0, y: 0.136795, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
