@@ -76,7 +76,7 @@
      <None Include="Assets\Shaders\Transparent\psx-trasparent-unlit-noambient.shader" />
      <None Include="Assets\Shaders\Pixelate.shader" />
  <Reference Include="Assembly-UnityScript">
- <HintPath>E:/FPS_LowFed_Project/FPS_8Bit_Project_Network/Fps_8Bit_Project/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
+ <HintPath>E:/FPS_LowFed_Project/EDMQ/EDMQ/Fps_8Bit_Project/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>E:/Work/Unity 5.3.5f1/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
