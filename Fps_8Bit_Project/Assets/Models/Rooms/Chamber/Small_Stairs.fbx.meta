@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 890bc4cfb8968a74fb0164524fc59cc2
-timeCreated: 1490635439
+timeCreated: 1490807675
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Wide_Stairs:polySurface27
+    4300000: Small_Stairs2:polySurface27
     9500000: //RootNode
   materials:
     importMaterials: 1
