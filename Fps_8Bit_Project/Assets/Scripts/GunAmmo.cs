@@ -1,19 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GunAmmo : MonoBehaviour {
 
-    public int shotgunAmmo;
+    public int shotgunAmmo = 25;
+    private EnemyHealth playerHealth;
+
+    private GameObject healthObj;
+    private GameObject ammoObj;
+    public Text healthText;
+    public Text ammoText;
 
 	void Start () {
-	
-	}
-	
-    void Rotation () {
-        transform.Rotate(Vector3.up * 2.5f);
-    }
+        playerHealth = GetComponentInParent<EnemyHealth>();
 
-	void Update () {
-        Rotation();
+        ammoObj = GameObject.Find("Ammo");
+        healthObj = GameObject.Find("Health");
+        ammoText = ammoObj.GetComponent<Text>();
+        healthText = healthObj.GetComponent<Text>();
 	}
+
+    void Update () {
+        ammoText.text = shotgunAmmo.ToString("Ammo:0");
+        healthText.text = playerHealth.currentHealth.ToString("Health:0");
+    }
 }

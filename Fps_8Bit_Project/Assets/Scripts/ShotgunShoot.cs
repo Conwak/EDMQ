@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RaycastShoot : MonoBehaviour {
+public class ShotgunShoot : MonoBehaviour {
 
-    public int gunDamage = 1;
-    public float fireRate = 0.25f;
-    public float weaponRange = 50f;
-    public float hitForce = 100f;
+    [HideInInspector]
+    static public int gunDamage = 24;
+    static public float fireRate = 0.25f;
+    static public float weaponRange = 12f;
+    static public float hitForce = 100f;
+    private GunAmmo gunAmmo;
     public Transform gunEnd;
 
     public GameObject sgShell;
     public Transform shellSpawn;
+    private Animator anim;
 
     private Camera cam;
     private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);
@@ -22,11 +25,15 @@ public class RaycastShoot : MonoBehaviour {
         laserLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
         cam = GetComponentInParent<Camera>();
+        gunAmmo = GetComponent<GunAmmo>();
+        anim = GetComponent<Animator>();
     }
 	
 	void Update () {
         if (Input.GetButtonDown ("Fire1") && Time.time > nextFire) {
             Instantiate(sgShell, shellSpawn.transform.position, sgShell.transform.rotation);
+            anim.SetBool("Shot", true);
+            gunAmmo.shotgunAmmo = gunAmmo.shotgunAmmo - 1;
             nextFire = Time.time + fireRate;
 
             StartCoroutine(ShotEffect());
@@ -55,6 +62,7 @@ public class RaycastShoot : MonoBehaviour {
         gunAudio.Play();
         laserLine.enabled = true;
         yield return shotDuration;
+        anim.SetBool("Shot", false);
         laserLine.enabled = false;
     }
 }

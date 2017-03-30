@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour {
     CharacterController player;
     public GameObject cam;
     public GameObject gun;
+    private GunAmmo gunAmmo;
+    private AudioSource locknload;
 
     float moveFB;
     float moveLR;
@@ -23,6 +25,8 @@ public class PlayerController : MonoBehaviour {
 
     void Start() {
         player = GetComponent<CharacterController>();
+        gunAmmo = GetComponentInChildren<GunAmmo>();
+        locknload = GetComponent<AudioSource>();
         hasSpawned = true;
     }
     void Update() {
@@ -52,7 +56,17 @@ public class PlayerController : MonoBehaviour {
         movement = transform.rotation * movement;
         player.Move(movement * Time.deltaTime);
     }
+
     void Sprint () {
         speed = speed * sprintSpeed;
+    }
+
+    void OnTriggerEnter(Collider other) {
+        if (other.gameObject.tag == "ShotgunAmmo") {
+            gunAmmo.shotgunAmmo = gunAmmo.shotgunAmmo + 20;
+            locknload.Play();
+            Destroy(other.gameObject);
+
+        }
     }
 }
