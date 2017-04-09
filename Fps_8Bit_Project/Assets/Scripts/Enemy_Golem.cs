@@ -9,8 +9,8 @@ public class Enemy_Golem : MonoBehaviour {
 
     private int damage = 16; //The amount of damage the golem applies to the player
     private bool hit;
-    public float attackDistance = 2.5f; //How close the golem needs to be before it can attack
-    public float distance; //The distance in between the golem and the player
+    private static float attackDistance = 2.5f; //How close the golem needs to be before it can attack
+    private float distance; //The distance in between the golem and the player
     private Transform target; //The transform of the player
     private NavMeshAgent navComponent; //The navigation mesh component
     private Animator anim; //The golem's animator controller
@@ -27,15 +27,13 @@ public class Enemy_Golem : MonoBehaviour {
             anim.SetBool("PlayerFound", true); //Starts the walking animation
             navComponent.SetDestination(target.position); //Sets destination at the player
             navComponent.Resume();
-        }
-        else if (target && distance > 10f) {
+        } else {
             anim.SetBool("PlayerFound", false);
             navComponent.Stop();
         }
         if (distance < attackDistance) { //Checks if distance is smaller or equal to attackDistance
             Attack(); //Starts attack function
-        }
-        else if (distance > attackDistance) {
+        } else {
             anim.SetBool("PlayerAttack", false);
         }
 	}
@@ -53,13 +51,13 @@ public class Enemy_Golem : MonoBehaviour {
         anim.SetBool("PlayerFound", false); //Stops the walking animation
         anim.SetBool("PlayerAttack", true); //Starts the attacking animation
         if (enemyHealth != null && hit == false) { //if enemy health doesn't equal null, damage the enemy with this scripts damage variable
-            enemyHealth.Damage(damage);
+            //enemyHealth.Damage(damage);
             hit = true;
         }
         StartCoroutine(AttackTime()); // Starts AttackTime function
     }
     IEnumerator AttackTime() { //Used to stop movement whilst attacking and then resume once attack is complete
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         hit = false;
         navComponent.Resume();
     }

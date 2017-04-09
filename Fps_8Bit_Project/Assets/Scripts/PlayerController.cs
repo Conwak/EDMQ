@@ -3,8 +3,8 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
+    [Header ("Speed and Sensitivity")]
     public float speed = 4f;
-    public float sprintSpeed = 2f;
     public float sensitivity = 2f;
 
     CharacterController player;
@@ -12,31 +12,28 @@ public class PlayerController : MonoBehaviour {
     public GameObject gun;
     private GunAmmo gunAmmo;
     private AudioSource locknload;
+    private Rigidbody rb;
 
     float moveFB;
     float moveLR;
     float moveUD;
     float rotX;
     float rotY;
-    float gravity = 9.8f;
+    float jumpHeight = 500f;
+    float gravity = 5f;
     float vSpeed = 0;
 
+    private bool isFalling = false;
     public bool hasSpawned;
 
     void Start() {
         player = GetComponent<CharacterController>();
         gunAmmo = GetComponentInChildren<GunAmmo>();
         locknload = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody>();
         hasSpawned = true;
     }
     void Update() {
-        if (Input.GetKeyDown(KeyCode.LeftShift)) {
-            Sprint();
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftShift)) {
-            speed = 4f;
-        }
-
         moveFB = Input.GetAxis("Vertical") * speed;
         moveLR = Input.GetAxis("Horizontal") * speed;
 
@@ -57,8 +54,10 @@ public class PlayerController : MonoBehaviour {
         player.Move(movement * Time.deltaTime);
     }
 
-    void Sprint () {
-        speed = speed * sprintSpeed;
+    void FixedUpdate () {
+        if (Input.GetButtonDown("Jump")) {
+            rb.AddRelativeForce(Vector3.up * moveUD);
+        }
     }
 
     void OnTriggerEnter(Collider other) {
