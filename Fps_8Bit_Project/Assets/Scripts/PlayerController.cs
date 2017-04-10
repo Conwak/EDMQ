@@ -65,7 +65,14 @@ public class PlayerController : MonoBehaviour {
             gunAmmo.shotgunAmmo = gunAmmo.shotgunAmmo + 20;
             locknload.Play();
             Destroy(other.gameObject);
-
+        }
+        if (other.gameObject.tag == "Lava") {
+            GetComponent<EnemyHealth>().currentHealth--;
+        }
+    }
+    void OnTriggerStay(Collider other) {
+        if (other.gameObject.tag == "Lava") {
+            GetComponent<EnemyHealth>().currentHealth--;
         }
     }
 }

@@ -45,11 +45,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Pixelation\Example\Scripts\ImageEffectBase.cs" />
-     <Compile Include="Assets\Pixelation\Example\Scripts\Plane.cs" />
-     <Compile Include="Assets\Pixelation\Example\Scripts\PointLight.cs" />
-     <Compile Include="Assets\Pixelation\Scripts\Chunky.cs" />
-     <Compile Include="Assets\Pixelation\Scripts\Pixelation.cs" />
+     <Compile Include="Assets\Prefabs\Pixelation\Example\Scripts\ImageEffectBase.cs" />
+     <Compile Include="Assets\Prefabs\Pixelation\Example\Scripts\Plane.cs" />
+     <Compile Include="Assets\Prefabs\Pixelation\Example\Scripts\PointLight.cs" />
+     <Compile Include="Assets\Prefabs\Pixelation\Scripts\Chunky.cs" />
+     <Compile Include="Assets\Prefabs\Pixelation\Scripts\Pixelation.cs" />
      <Compile Include="Assets\Scripts\CameraScreenGrab.cs" />
      <Compile Include="Assets\Scripts\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\Enemy_Golem.cs" />
@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\InstantiateDestroy.cs" />
      <Compile Include="Assets\Scripts\LookAtPlayer.cs" />
      <Compile Include="Assets\Scripts\MouseConstrict.cs" />
+     <Compile Include="Assets\Scripts\PanningTexture.cs" />
      <Compile Include="Assets\Scripts\Pause.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerSetup.cs" />
@@ -69,15 +70,15 @@
      <Compile Include="Assets\Yuponic\YuME\Scripts\YuME_prefabSamplerData.cs" />
      <Compile Include="Assets\Yuponic\YuME\Scripts\YuME_tileGizmo.cs" />
      <Compile Include="Assets\Yuponic\YuME\Scripts\YuME_tilesetData.cs" />
-     <None Include="Assets\Pixelation\Readme.txt" />
+     <None Include="Assets\Prefabs\Pixelation\Readme.txt" />
      <None Include="Assets\Shaders\Transparent\psx-trasparent-vertexlit.shader" />
      <None Include="Assets\Shaders\AffineTexture.shader" />
      <None Include="Assets\Shaders\Transparent\psx-trasparent-unlit.shader" />
      <None Include="Assets\Shaders\psx-unlit.shader" />
      <None Include="Assets\Shaders\psx-unlit_noambient.shader" />
-     <None Include="Assets\Pixelation\Shaders\Chunky.shader" />
+     <None Include="Assets\Prefabs\Pixelation\Shaders\Chunky.shader" />
      <None Include="Assets\Standard Assets\Fonts\OpenSans\License!.txt" />
-     <None Include="Assets\Pixelation\Shaders\Pixelation.shader" />
+     <None Include="Assets\Prefabs\Pixelation\Shaders\Pixelation.shader" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Shaders\psx-vertexlit.shader" />
      <None Include="Assets\Shaders\Transparent\psx-trasparent-unlit-noambient.shader" />

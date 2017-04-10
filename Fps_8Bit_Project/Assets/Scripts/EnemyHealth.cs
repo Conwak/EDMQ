@@ -14,6 +14,7 @@ public class EnemyHealth : MonoBehaviour {
         Instantiate(blood_p, position, Quaternion.identity);
         if (currentHealth <= 0) {
             gameObject.SetActive(false);
+            currentHealth = 0;
         }
     }
 }

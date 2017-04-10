@@ -7,10 +7,6 @@ public class GunClamp : MonoBehaviour {
     private float sensitivityZ = 2f;
 
     void Update () {
-        LockedRotation();
-    }
-
-	void LockedRotation () {
         rotationZ += Input.GetAxis("Mouse Y");
         rotationZ = Mathf.Clamp(0, 0, 0);
 
