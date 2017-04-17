@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour {
 
     [Header ("Speed and Sensitivity")]
     public float speed = 4f;
+    public float jSpeed = 2f;
     public float sensitivity = 2f;
 
     CharacterController player;
@@ -19,11 +20,13 @@ public class PlayerController : MonoBehaviour {
     float moveUD;
     float rotX;
     float rotY;
-    float jumpHeight = 500f;
-    float gravity = 5f;
+    float jumpHeight = 4f;
+    float gravity = 10f;
     float vSpeed = 0;
 
-    private bool isFalling = false;
+    bool grounded = false;
+    Vector3 moveDirection = Vector3.zero;
+
     public bool hasSpawned;
 
     void Start() {
@@ -47,17 +50,23 @@ public class PlayerController : MonoBehaviour {
         cam.transform.localRotation = Quaternion.Euler(rotY, 0, 0);
         gun.transform.localRotation = Quaternion.Euler(rotX, 90, rotY);
 
-        vSpeed -= gravity * Time.deltaTime;
-        moveUD = vSpeed;
-
         movement = transform.rotation * movement;
         player.Move(movement * Time.deltaTime);
     }
 
     void FixedUpdate () {
-        if (Input.GetButtonDown("Jump")) {
-            rb.AddRelativeForce(Vector3.up * moveUD);
+        if (grounded) {
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection *= jSpeed;
+
+            if (Input.GetButton("Jump")) moveDirection.y = jumpHeight;
         }
+        moveDirection.y -= gravity * Time.deltaTime;
+
+        CharacterController controller = (CharacterController)GetComponent(typeof(CharacterController));
+        CollisionFlags flags = controller.Move(moveDirection * Time.deltaTime);
+        grounded = (flags & CollisionFlags.CollidedBelow) != 0;
     }
 
     void OnTriggerEnter(Collider other) {
