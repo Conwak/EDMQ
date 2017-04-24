@@ -8,11 +8,17 @@ public class PlayerController : MonoBehaviour {
     public float jSpeed = 2f;
     public float sensitivity = 2f;
 
+    [Header("Guns")]
+    public GameObject shotgun;
+    public GameObject machineGun;
+
     CharacterController player;
+
+    [Header("Other")]
     public GameObject cam;
     public GameObject gun;
     private GunAmmo gunAmmo;
-    private AudioSource locknload;
+    private AudioSource jumpAudio;
     private Rigidbody rb;
 
     float moveFB;
@@ -32,11 +38,17 @@ public class PlayerController : MonoBehaviour {
     void Start() {
         player = GetComponent<CharacterController>();
         gunAmmo = GetComponentInChildren<GunAmmo>();
-        locknload = GetComponent<AudioSource>();
+        jumpAudio = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         hasSpawned = true;
     }
     void Update() {
+        WeaponSwitch();
+
+        if (Input.GetButtonDown("Jump")) {
+            jumpAudio.Play();
+        }
+
         moveFB = Input.GetAxis("Vertical") * speed;
         moveLR = Input.GetAxis("Horizontal") * speed;
 
@@ -69,11 +81,22 @@ public class PlayerController : MonoBehaviour {
         grounded = (flags & CollisionFlags.CollidedBelow) != 0;
     }
 
+    void WeaponSwitch () {
+        if (Input.GetKeyDown("1")) {
+            shotgun.SetActive(true);
+            machineGun.SetActive(false);
+        }
+        else if (Input.GetKeyDown("2")) {
+            shotgun.SetActive(false);
+            machineGun.SetActive(true);
+        }
+    }
+
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "ShotgunAmmo") {
             gunAmmo.shotgunAmmo = gunAmmo.shotgunAmmo + 20;
-            locknload.Play();
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<AudioSource>().Play();
+            Destroy(other.gameObject, 2);
         }
         if (other.gameObject.tag == "Lava") {
             GetComponent<EnemyHealth>().currentHealth--;

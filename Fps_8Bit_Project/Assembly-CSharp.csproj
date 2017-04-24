@@ -57,6 +57,8 @@
      <Compile Include="Assets\Scripts\GunClamp.cs" />
      <Compile Include="Assets\Scripts\InstantiateDestroy.cs" />
      <Compile Include="Assets\Scripts\LookAtPlayer.cs" />
+     <Compile Include="Assets\Scripts\MachineGunShoot.cs" />
+     <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\MouseConstrict.cs" />
      <Compile Include="Assets\Scripts\PanningTexture.cs" />
      <Compile Include="Assets\Scripts\Pause.cs" />

@@ -25,12 +25,12 @@ public class ShotgunShoot : MonoBehaviour {
         laserLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
         cam = GetComponentInParent<Camera>();
-        gunAmmo = GetComponent<GunAmmo>();
+        gunAmmo = GetComponentInParent<GunAmmo>();
         anim = GetComponent<Animator>();
     }
 	
 	void Update () {
-        if (Input.GetButtonDown ("Fire1") && Time.time > nextFire) {
+        if (Input.GetButtonDown ("Fire1") && Time.time > nextFire && gunAmmo.shotgunAmmo > 0) {
             Instantiate(sgShell, shellSpawn.transform.position, sgShell.transform.rotation);
             anim.SetBool("Shot", true);
             gunAmmo.shotgunAmmo = gunAmmo.shotgunAmmo - 1;
