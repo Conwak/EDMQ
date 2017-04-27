@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\Enemy_Golem.cs" />
      <Compile Include="Assets\Scripts\GunAmmo.cs" />
      <Compile Include="Assets\Scripts\GunClamp.cs" />
+     <Compile Include="Assets\Scripts\HeadBob.cs" />
      <Compile Include="Assets\Scripts\InstantiateDestroy.cs" />
      <Compile Include="Assets\Scripts\LookAtPlayer.cs" />
      <Compile Include="Assets\Scripts\MachineGunShoot.cs" />

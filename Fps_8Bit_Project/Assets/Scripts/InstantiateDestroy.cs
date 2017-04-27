@@ -3,7 +3,7 @@ using System.Collections;
 
 public class InstantiateDestroy : MonoBehaviour {
 
-    float lifeTime = 1f;
+    float lifeTime = 5f;
 
 	void Awake () {
         Destroy(this.gameObject, lifeTime);

@@ -4,9 +4,9 @@ using System.Collections;
 public class MachineGunShoot : MonoBehaviour {
 
     [HideInInspector]
-    static public int gunDamage = 24;
+    static public int gunDamage = 9;
     static public float fireRate = 0.1f;
-    static public float weaponRange = 50f;
+    static public float weaponRange = 100f;
     static public float hitForce = 100f;
     static public bool shooting;
     private GunAmmo gunAmmo;

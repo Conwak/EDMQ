@@ -23,6 +23,7 @@ public class Pause : MonoBehaviour {
 
     [SerializeField] [Header ("Canvas")]
     public Slider pixelSlider;
+    public GameObject pixelOn;
     public Slider fovSlider;
     public GameObject slider;
     public GameObject fov;
@@ -59,6 +60,7 @@ public class Pause : MonoBehaviour {
                 pauseBack.SetActive(true);
                 slider.SetActive(true);
                 fov.SetActive(true);
+                pixelOn.SetActive(true);
                 pixelSlider.enabled = true;
                 playerController.enabled = false;
                 gunClamp.enabled = false;
@@ -70,6 +72,7 @@ public class Pause : MonoBehaviour {
                 pauseBack.SetActive(false);
                 slider.SetActive(false);
                 fov.SetActive(false);
+                pixelOn.SetActive(false);
                 pixelSlider.enabled = false;
                 playerController.enabled = true;
                 gunClamp.enabled = true;
@@ -83,5 +86,13 @@ public class Pause : MonoBehaviour {
             return;
         player = GameObject.FindGameObjectWithTag("Player");
         playerCam = GameObject.FindGameObjectWithTag("MainCamera");
+    }
+
+    public void Pixelization () {
+        if (pixelOn.GetComponent<Toggle>().isOn == false) {
+            pixel.enabled = false;
+        } else {
+            pixel.enabled = true;
+        }
     }
 }

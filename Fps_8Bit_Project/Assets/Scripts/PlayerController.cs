@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour {
         if (other.gameObject.tag == "ShotgunAmmo") {
             gunAmmo.shotgunAmmo = gunAmmo.shotgunAmmo + 20;
             other.gameObject.GetComponent<AudioSource>().Play();
-            Destroy(other.gameObject, 2);
+            Destroy(other.gameObject, 0.2f);
         }
         if (other.gameObject.tag == "Lava") {
             GetComponent<EnemyHealth>().currentHealth--;
