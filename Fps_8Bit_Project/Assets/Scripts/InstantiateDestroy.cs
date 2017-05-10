@@ -3,9 +3,15 @@ using System.Collections;
 
 public class InstantiateDestroy : MonoBehaviour {
 
-    float lifeTime = 5f;
+    public float lifeTime = 5f;
 
 	void Awake () {
         Destroy(this.gameObject, lifeTime);
 	}
+
+    void OnTriggerEnter (Collider other) {
+        if (other.gameObject.tag == "Enemy") {
+            Destroy(this.gameObject);
+        }
+    }
 }

@@ -1,64 +1,60 @@
 ﻿using UnityEngine;
 using System.Collections;
-/*
-Author: Connor Wakes	Date: 20th March 2017
-Objects holding this script: Enemy_Golem
-Function:	Controls the enemy golem's AI as well as animation
-*/
+
 public class Enemy_Golem : MonoBehaviour {
 
-    private int damage = 16; //The amount of damage the golem applies to the player
+    private int damage = 16;
     private bool hit;
-    private static float attackDistance = 2.5f; //How close the golem needs to be before it can attack
-    private float distance; //The distance in between the golem and the player
-    private Transform target; //The transform of the player
-    private NavMeshAgent navComponent; //The navigation mesh component
-    private Animator anim; //The golem's animator controller
-    private GameObject player; //The player controller script
+    private static float attackDistance = 2.5f;
+    private float distance;
+    private Transform target;
+    private NavMeshAgent navComponent;
+    private Animator anim;
+    private PlayerController player;
 
 	void Start () {
-        navComponent = gameObject.GetComponent<NavMeshAgent>(); //Finds the navigation mesh
-        anim = GetComponent<Animator>(); //Finds the animator controller on self
+        navComponent = gameObject.GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
 	}
 	void Update () {
-        if (!target) {
+        if (!target && MainMenu.isPlaying) {
             FindPlayer();
         }
         if (target) {
-            distance = Vector3.Distance(target.position, transform.position); //Sets the distance variable
+            distance = Vector3.Distance(target.position, transform.position);
         }
         if (target && distance < 10f) {
-            anim.SetBool("PlayerFound", true); //Starts the walking animation
-            navComponent.SetDestination(target.position); //Sets destination at the player
+            anim.SetBool("PlayerFound", true);
+            navComponent.SetDestination(target.position);
             navComponent.Resume();
         } else {
             anim.SetBool("PlayerFound", false);
             navComponent.Stop();
         }
-        if (target && distance < attackDistance) { //Checks if distance is smaller or equal to attackDistance
-            Attack(); //Starts attack function
+        if (target && distance < attackDistance) {
+            Attack();
         } else {
             anim.SetBool("PlayerAttack", false);
         }
 	}
-    void FindPlayer () { //Function that finds the player
+    void FindPlayer () {
         if (target)
-            target = player.transform;
         return;
-        player = GameObject.FindGameObjectWithTag("Player"); //Finds player via the PlayerController script
+        player = GameObject.FindObjectOfType<PlayerController>();
+        target = player.transform;
     }
-    void Attack () { //Function that controls the golem attack
-        navComponent.Stop(); //Stops the movement of the golem whilst attacking
-        EnemyHealth enemyHealth = target.GetComponent<EnemyHealth>(); //Finds the enemy health -- Player health in this case -- Used so that enemies can damage each other
-        anim.SetBool("PlayerFound", false); //Stops the walking animation
-        anim.SetBool("PlayerAttack", true); //Starts the attacking animation
-        if (enemyHealth != null && hit == false) { //if enemy health doesn't equal null, damage the enemy with this scripts damage variable
+    void Attack () {
+        navComponent.Stop();
+        EnemyHealth enemyHealth = target.GetComponent<EnemyHealth>();
+        anim.SetBool("PlayerFound", false);
+        anim.SetBool("PlayerAttack", true);
+        if (enemyHealth != null && hit == false) {
             //enemyHealth.Damage(damage);
             hit = true;
         }
-        StartCoroutine(AttackTime()); // Starts AttackTime function
+        StartCoroutine(AttackTime());
     }
-    IEnumerator AttackTime() { //Used to stop movement whilst attacking and then resume once attack is complete
+    IEnumerator AttackTime() {
         yield return new WaitForSeconds(5f);
         hit = false;
         navComponent.Resume();

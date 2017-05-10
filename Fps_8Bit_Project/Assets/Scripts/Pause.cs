@@ -31,7 +31,7 @@ public class Pause : MonoBehaviour {
     private Pixelation pixel;
 
     void Start () {
-        pixelSlider.value = 312;
+        pixelSlider.value = 465;
         fovSlider.value = 90;
     }
 

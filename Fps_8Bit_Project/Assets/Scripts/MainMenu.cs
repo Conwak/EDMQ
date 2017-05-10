@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour {
     [SerializeField]
     public Transform spawn;
 
-    private bool isPlaying;
+    static public bool isPlaying;
     public LayerMask UI;
 
     void Update () {

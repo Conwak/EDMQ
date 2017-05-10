@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 42eea5f312e1347479bf9d9b8de969c1
-timeCreated: 1490806869
+timeCreated: 1493904009
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Wide_Stairs3:polySurface43
+    4300000: Wide_Stairs4:pPlane10
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -40,7 +40,7 @@ ModelImporter:
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

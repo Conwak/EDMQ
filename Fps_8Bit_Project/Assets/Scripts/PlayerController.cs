@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject cam;
     public GameObject gun;
     private GunAmmo gunAmmo;
+    private EnemyHealth playerHealth;
     private AudioSource jumpAudio;
     private Rigidbody rb;
 
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour {
     void Start() {
         player = GetComponent<CharacterController>();
         gunAmmo = GetComponentInChildren<GunAmmo>();
+        playerHealth = GetComponent<EnemyHealth>();
         jumpAudio = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         hasSpawned = true;
@@ -95,6 +97,21 @@ public class PlayerController : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "ShotgunAmmo") {
             gunAmmo.shotgunAmmo = gunAmmo.shotgunAmmo + 20;
+            other.gameObject.GetComponent<AudioSource>().Play();
+            Destroy(other.gameObject, 0.2f);
+        }
+        if (other.gameObject.tag == "MGAmmo") {
+            gunAmmo.machineAmmo = gunAmmo.machineAmmo + 25;
+            other.gameObject.GetComponent<AudioSource>().Play();
+            Destroy(other.gameObject, 0.2f);
+        }
+        if (other.gameObject.tag == "GreenArmour") {
+            playerHealth.currentArmour = playerHealth.currentArmour + 100;
+            other.gameObject.GetComponent<AudioSource>().Play();
+            Destroy(other.gameObject, 0.2f);
+        }
+        if (other.gameObject.tag == "HealthS") {
+            playerHealth.currentHealth = playerHealth.currentHealth + 15;
             other.gameObject.GetComponent<AudioSource>().Play();
             Destroy(other.gameObject, 0.2f);
         }
