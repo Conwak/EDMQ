@@ -5,62 +5,46 @@ using Assets.Pixelation.Scripts;
 
 public class Pause : MonoBehaviour {
 
-    [Header ("Pause")]
-    public GameObject pauseText;
-    public GameObject pauseBack;
-    private bool playerFound;
     public bool paused;
 
-    [SerializeField] [Header ("Player")]
-    private GameObject player;
-    [SerializeField]
-    private PlayerController playerController;
-    [SerializeField]
+    public PlayerController playerController;
+    
     private ShotgunShoot shotgunShoot;
     private GunClamp gunClamp;
-    private GameObject playerCam;
-    private GameObject cam;
+    public GameObject playerCam;
 
-    [SerializeField] [Header ("Canvas")]
+    public Pixelation pixel;
+
     public Slider pixelSlider;
-    public GameObject pixelOn;
     public Slider fovSlider;
-    public GameObject slider;
-    public GameObject fov;
+    public Toggle pixelToggle;
+    private Text fovText;
 
-    private Pixelation pixel;
+    public GameObject[] activeObjs;
 
     void Start () {
+        playerCam = GameObject.FindGameObjectWithTag("MainCamera");
+        pixel = playerCam.GetComponent<Pixelation>();
+        playerController = GameObject.FindObjectOfType<PlayerController>();
+        gunClamp = playerCam.GetComponentInChildren<GunClamp>();
+        shotgunShoot = playerCam.GetComponentInChildren<ShotgunShoot>();
+        fovText = fovSlider.GetComponentInChildren<Text>();
         pixelSlider.value = 465;
         fovSlider.value = 90;
     }
 
     void Update() {
-        if (!player) {
-            FindPlayer();
-        }
-        if (playerCam && player && !playerFound) {
-            pixel = playerCam.GetComponent<Pixelation>();
-            cam = GameObject.FindGameObjectWithTag("MainCamera");
-            playerController = player.GetComponent<PlayerController>();
-            gunClamp = playerCam.GetComponentInChildren<GunClamp>();
-            shotgunShoot = playerCam.GetComponentInChildren<ShotgunShoot>();
-            playerFound = true;
-        }
         if (paused) {
             pixel.BlockCount = pixelSlider.value;
-            cam.GetComponent<Camera>().fieldOfView = fovSlider.value;
-            fov.GetComponentInChildren<Text>().text = fovSlider.value.ToString("FOV: 0");
+            fovText.text = fovSlider.value.ToString("FOV: 0");
         }
         if (Input.GetKeyDown("backspace")) {
             if (Time.timeScale == 1.0f) {
                 Time.timeScale = 0;
                 paused = true;
-                pauseText.SetActive(true);
-                pauseBack.SetActive(true);
-                slider.SetActive(true);
-                fov.SetActive(true);
-                pixelOn.SetActive(true);
+                foreach (GameObject obj in activeObjs) {
+                    obj.SetActive(true);
+                }
                 pixelSlider.enabled = true;
                 playerController.enabled = false;
                 gunClamp.enabled = false;
@@ -68,11 +52,9 @@ public class Pause : MonoBehaviour {
             } else {
                 Time.timeScale = 1.0f;
                 paused = false;
-                pauseText.SetActive(false);
-                pauseBack.SetActive(false);
-                slider.SetActive(false);
-                fov.SetActive(false);
-                pixelOn.SetActive(false);
+                foreach (GameObject obj in activeObjs) {
+                    obj.SetActive(false);
+                }
                 pixelSlider.enabled = false;
                 playerController.enabled = true;
                 gunClamp.enabled = true;
@@ -80,16 +62,8 @@ public class Pause : MonoBehaviour {
             }
         }
     }
-
-    void FindPlayer () {
-        if (player != null)
-            return;
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerCam = GameObject.FindGameObjectWithTag("MainCamera");
-    }
-
     public void Pixelization () {
-        if (pixelOn.GetComponent<Toggle>().isOn == false) {
+        if (pixelToggle.isOn == false) {
             pixel.enabled = false;
         } else {
             pixel.enabled = true;
