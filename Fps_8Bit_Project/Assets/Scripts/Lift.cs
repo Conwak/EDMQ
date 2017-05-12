@@ -3,28 +3,45 @@ using System.Collections;
 
 public class Lift : MonoBehaviour {
 
-    public Transform lift;
-    public Transform startPos;
-    public Transform endPos;
-    private float speed = 1f;
+    public Transform startTarget;
+    public Transform endTarget;
+    public float speed;
+    private bool liftPressed;
 
-    private float startTime;
-    private float journeyLength;
-
-    void Start() {
-        journeyLength = Vector3.Distance(startPos.position, endPos.position);
+    void Update() {
+        if (liftPressed && transform.position != endTarget.position) {
+            transform.position = Vector3.MoveTowards(transform.position, endTarget.position, speed);
+        }
+        if (!liftPressed) {
+            GoUp();
+        }
+        if (transform.position == endTarget.position) {
+            StartCoroutine(LiftUp());
+        }
     }
 
     void OnTriggerStay(Collider other) {
         if (other.gameObject.tag == "Player") {
-            if (Input.GetButton("Action")) {
-                float fracJourney = speed / journeyLength;
-                if (lift.position.y == startPos.position.y) {
-                    lift.transform.position = Vector3.Lerp(startPos.position, endPos.position, fracJourney);
-                } else {
-                    lift.transform.position = Vector3.Lerp(endPos.position, startPos.position, fracJourney);
-                }
+            if (Input.GetButton("Action") && transform.position == startTarget.position) {
+                liftPressed = true;
             }
         }
+    }
+
+    void OnTriggerExit(Collider other) {
+        if (other.gameObject.tag == "Player" && transform.position == endTarget.position) {
+            StartCoroutine(LiftUp());
+        }
+    }
+
+    void GoUp () {
+        if (transform.position == startTarget.position)
+            return;
+        transform.position = Vector3.MoveTowards(transform.position, startTarget.position, speed);
+    }
+
+    IEnumerator LiftUp () {
+        yield return new WaitForSeconds(5f);
+        liftPressed = false;
     }
 }

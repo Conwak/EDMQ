@@ -51,6 +51,12 @@ public class PlayerController : MonoBehaviour {
             jumpAudio.Play();
         }
 
+        if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") < 0) {
+            shotgun.GetComponent<Animator>().SetBool("Walking", true);
+        } else {
+            shotgun.GetComponent<Animator>().SetBool("Walking", false);
+        }
+
         moveFB = Input.GetAxis("Vertical") * speed;
         moveLR = Input.GetAxis("Horizontal") * speed;
 
