@@ -5,7 +5,7 @@ public class Lift : MonoBehaviour {
 
     public Transform startTarget;
     public Transform endTarget;
-    public float speed;
+    public float speed = 0.05f;
     private bool liftPressed;
 
     void Update() {

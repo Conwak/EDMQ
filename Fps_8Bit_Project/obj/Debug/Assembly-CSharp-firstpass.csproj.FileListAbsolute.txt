@@ -19,3 +19,8 @@ E:\FPS_LowFed_Project\EDMQ\EDMQ\Fps_8Bit_Project\Temp\bin\Debug\UnityEngine.Netw
 E:\FPS_LowFed_Project\EDMQ\EDMQ\Fps_8Bit_Project\obj\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
 E:\FPS_LowFed_Project\EDMQ\EDMQ\Fps_8Bit_Project\obj\Debug\Assembly-CSharp-firstpass.dll
 E:\FPS_LowFed_Project\EDMQ\EDMQ\Fps_8Bit_Project\obj\Debug\Assembly-CSharp-firstpass.pdb
+E:\FPS_LowFed_Project\EDMQ\EDMQ\Fps_8Bit_Project\Temp\bin\Debug\KDTree.dll
+E:\FPS_LowFed_Project\EDMQ\EDMQ\Fps_8Bit_Project\Temp\bin\Debug\pb_Stl.dll
+E:\FPS_LowFed_Project\EDMQ\EDMQ\Fps_8Bit_Project\Temp\bin\Debug\ProBuilderCore-Unity5.dll
+E:\FPS_LowFed_Project\EDMQ\EDMQ\Fps_8Bit_Project\Temp\bin\Debug\ProBuilderMeshOps-Unity5.dll
+E:\FPS_LowFed_Project\EDMQ\EDMQ\Fps_8Bit_Project\Temp\bin\Debug\Triangle.dll

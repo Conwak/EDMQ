@@ -27,8 +27,10 @@ public class PlayerController : MonoBehaviour {
     float moveUD;
     float rotX;
     float rotY;
+    bool inWater;
     float jumpHeight = 4f;
-    float gravity = 10f;
+    [HideInInspector]
+    public float gravity = 10f;
     float vSpeed = 0;
 
     bool grounded = false;
@@ -84,9 +86,16 @@ public class PlayerController : MonoBehaviour {
         }
         moveDirection.y -= gravity * Time.deltaTime;
 
-        CharacterController controller = (CharacterController)GetComponent(typeof(CharacterController));
-        CollisionFlags flags = controller.Move(moveDirection * Time.deltaTime);
-        grounded = (flags & CollisionFlags.CollidedBelow) != 0;
+        if (!inWater) {
+            CharacterController controller = (CharacterController)GetComponent(typeof(CharacterController));
+            CollisionFlags flags = controller.Move(moveDirection * Time.deltaTime);
+            grounded = (flags & CollisionFlags.CollidedBelow) != 0;
+        } else {
+            CharacterController controller = (CharacterController)GetComponent(typeof(CharacterController));
+            CollisionFlags flags = controller.Move(moveDirection * Time.deltaTime);
+            grounded = (flags & CollisionFlags.None) == 0;
+        }
+
     }
 
     void WeaponSwitch () {
@@ -128,6 +137,16 @@ public class PlayerController : MonoBehaviour {
     void OnTriggerStay(Collider other) {
         if (other.gameObject.tag == "Lava") {
             GetComponent<EnemyHealth>().currentHealth--;
+        }
+        if (other.gameObject.tag == "Water") {
+            inWater = true;
+            gravity = 50f;
+        }
+    }
+    void OnTriggerExit(Collider other) {
+        if (other.gameObject.tag == "Water") {
+            inWater = false;
+            gravity = 10f;
         }
     }
 }

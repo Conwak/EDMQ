@@ -4,15 +4,16 @@ using System.Collections;
 public class Door : MonoBehaviour {
 
     public GameObject door;
-    public Transform target;
-    public float speed;
-    private float step;
+    public Transform startTarget;
+    public Transform endTarget;
+    public float speed = 0.05f;
     private bool doorPressed;
 
     void Update () {
-        step = speed * Time.deltaTime;
         if (doorPressed) {
-            door.transform.position = Vector3.Lerp(door.transform.position, target.position, step);
+            door.transform.position = Vector3.MoveTowards(door.transform.position, endTarget.position, speed);
+        } else {
+            Close();
         }
     }
 
@@ -21,6 +22,28 @@ public class Door : MonoBehaviour {
             if (Input.GetButton("Action")) {
                 doorPressed = true;
             }
+            else if (this.tag == "Red_Door") {
+                if (Input.GetButton("Action")) {
+                    doorPressed = true;
+                }
+            }
         }
+    }
+
+    void OnTriggerExit (Collider other) {
+        if (other.gameObject.tag == "Player") {
+            StartCoroutine(DoorClose());
+        }
+    }
+
+    void Close () {
+        if (door.transform.position == startTarget.position)
+            return;
+        door.transform.position = Vector3.MoveTowards(door.transform.position, startTarget.position, speed);
+    }
+
+    IEnumerator DoorClose () {
+        yield return new WaitForSeconds(5f);
+        doorPressed = false;
     }
 }
