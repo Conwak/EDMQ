@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyHealth : MonoBehaviour {
 
-    public int currentHealth = 3;
+    public float currentHealth = 3;
     public int currentArmour = 25;
     public GameObject blood_p;
     public GameObject bloodWO_p;

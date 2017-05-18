@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject machineGun;
 
     CharacterController player;
+    PlayerStats pStats;
 
     [Header("Other")]
     public GameObject cam;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start() {
         player = GetComponent<CharacterController>();
+        pStats = GetComponent<PlayerStats>();
         gunAmmo = GetComponentInChildren<GunAmmo>();
         playerHealth = GetComponent<EnemyHealth>();
         jumpAudio = GetComponent<AudioSource>();
@@ -130,6 +132,10 @@ public class PlayerController : MonoBehaviour {
             other.gameObject.GetComponent<AudioSource>().Play();
             Destroy(other.gameObject, 0.2f);
         }
+        if (other.gameObject.name == "RedKey") {
+            pStats.rKey = true;
+            Destroy(other.gameObject, 0.2f);
+        }
         if (other.gameObject.tag == "Lava") {
             GetComponent<EnemyHealth>().currentHealth--;
         }
@@ -140,13 +146,23 @@ public class PlayerController : MonoBehaviour {
         }
         if (other.gameObject.tag == "Water") {
             inWater = true;
-            gravity = 50f;
+            StartCoroutine(Breath());
+            gravity = 70f;
         }
     }
     void OnTriggerExit(Collider other) {
         if (other.gameObject.tag == "Water") {
             inWater = false;
             gravity = 10f;
+        }
+    }
+
+    IEnumerator Breath () {
+        yield return new WaitForSeconds(10);
+        if (inWater) {
+            playerHealth.currentHealth = playerHealth.currentHealth - 0.04f;
+        } else {
+            StopCoroutine(Breath());
         }
     }
 }

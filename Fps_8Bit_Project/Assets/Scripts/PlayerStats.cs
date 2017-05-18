@@ -6,6 +6,9 @@ public class PlayerStats : MonoBehaviour {
     [HideInInspector]
     public float shade = 0;
 
+    [HideInInspector]
+    public bool rKey; public bool bKey;
+
     private float vitality = 1;
     private float strength = 1;
     private float dexterity = 1;
