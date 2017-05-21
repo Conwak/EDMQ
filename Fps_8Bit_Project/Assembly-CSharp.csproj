@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Door.cs" />
      <Compile Include="Assets\Scripts\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\Enemy_Golem.cs" />
+     <Compile Include="Assets\Scripts\GMSPlayer.cs" />
      <Compile Include="Assets\Scripts\GunAmmo.cs" />
      <Compile Include="Assets\Scripts\GunClamp.cs" />
      <Compile Include="Assets\Scripts\HeadBob.cs" />
@@ -76,6 +77,7 @@
      <Compile Include="Assets\Scripts\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\RaycastViewer.cs" />
      <Compile Include="Assets\Scripts\ShotgunShoot.cs" />
+     <Compile Include="Assets\Scripts\SpawnPlayer.cs" />
      <Compile Include="Assets\Scripts\WorkBench.cs" />
      <Compile Include="Assets\Yuponic\YuME\Scripts\YuME_GizmoGrid.cs" />
      <Compile Include="Assets\Yuponic\YuME\Scripts\YuME_editorData.cs" />

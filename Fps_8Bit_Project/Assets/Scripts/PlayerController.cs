@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour {
     [Header ("Speed and Sensitivity")]
     public float speed = 4f;
     public float jSpeed = 2f;
-    public float sensitivity = 2f;
+    public float sensitivity = 6f;
 
     [Header("Guns")]
     public GameObject shotgun;
@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour {
     [Header("Other")]
     public GameObject cam;
     public GameObject gun;
+
+    [HideInInspector]
+    public bool gChanged;
+
     private GunAmmo gunAmmo;
     private EnemyHealth playerHealth;
     private AudioSource jumpAudio;
@@ -76,9 +80,7 @@ public class PlayerController : MonoBehaviour {
 
         movement = transform.rotation * movement;
         player.Move(movement * Time.deltaTime);
-    }
 
-    void FixedUpdate () {
         if (grounded) {
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
@@ -97,17 +99,22 @@ public class PlayerController : MonoBehaviour {
             CollisionFlags flags = controller.Move(moveDirection * Time.deltaTime);
             grounded = (flags & CollisionFlags.None) == 0;
         }
-
     }
 
     void WeaponSwitch () {
         if (Input.GetKeyDown("1")) {
+            gChanged = true;
             shotgun.SetActive(true);
+            gun = shotgun;
             machineGun.SetActive(false);
+            StartCoroutine(GunChange());
         }
         else if (Input.GetKeyDown("2")) {
+            gChanged = true;
             shotgun.SetActive(false);
+            gun = machineGun;
             machineGun.SetActive(true);
+            StartCoroutine(GunChange());
         }
     }
 
@@ -164,5 +171,10 @@ public class PlayerController : MonoBehaviour {
         } else {
             StopCoroutine(Breath());
         }
+    }
+
+    IEnumerator GunChange () {
+        yield return new WaitForSeconds(1);
+        gChanged = false;
     }
 }

@@ -3,19 +3,19 @@ using System.Collections;
 
 public class GunClamp : MonoBehaviour {
 
-    private float rotationZ = 0f;
-    private float rotationY = 0f;
+    private float rotateRate = 5f;
+    private Vector3 angle;
 
     void Awake () {
-        rotationZ += Input.GetAxis("Mouse Y");
-        rotationZ = Mathf.Clamp(0, 0, 0);
-
-        rotationY += Input.GetAxis("Mouse X");
-        rotationY = Mathf.Clamp(0, 0, 0);
-        this.transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, -rotationZ);
+        angle = transform.localEulerAngles;
+        angle.z = Mathf.Clamp(angle.z + Time.deltaTime * rotateRate, 0f, 0f);
+        angle.x = Mathf.Clamp(angle.x + Time.deltaTime * rotateRate, 0f, 0f);
+        transform.localEulerAngles = angle;
     }
 
     void Update () {
-        this.transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, -rotationZ);
+        angle.z = Mathf.Clamp(angle.z + Time.deltaTime*rotateRate, 0f, 0f);
+        angle.x = Mathf.Clamp(angle.x + Time.deltaTime * rotateRate, 0f, 0f);
+        transform.localEulerAngles = angle;
     }
 }

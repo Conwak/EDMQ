@@ -39,14 +39,12 @@ public class HeadBob : MonoBehaviour {
 
     void OnTriggerStay (Collider other) {
         if (other.gameObject.tag == "Water") {
-            GetComponent<DepthOfField>().enabled = true;
             GetComponent<ScreenOverlay>().enabled = true;
         }
     }
 
     void OnTriggerExit (Collider other) {
         if (other.gameObject.tag == "Water") {
-            GetComponent<DepthOfField>().enabled = false;
             GetComponent<ScreenOverlay>().enabled = false;
         }
     }

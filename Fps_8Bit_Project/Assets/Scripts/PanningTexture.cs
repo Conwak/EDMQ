@@ -4,7 +4,7 @@ using System.Collections;
 public class PanningTexture : MonoBehaviour {
 
     private int materialIndex = 0;
-    private Vector2 uvAnimationRate = new Vector2(0.2f, 0.2f);
+    public Vector2 uvAnimationRate = new Vector2(0.2f, 0.2f);
     private string textureName = "_MainTex";
     private Vector2 uvOffset = Vector2.zero;
 
