@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour {
 
     [Header ("Speed and Sensitivity")]
     public float speed = 4f;
-    public float jSpeed = 2f;
+    public float jSpeed = 4f;
     public float sensitivity = 6f;
 
     [Header("Guns")]
