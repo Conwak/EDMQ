@@ -29,7 +29,7 @@ public class PlayerSwim : MonoBehaviour {
             pController.runSpeed = 3f;
             pController.walkSpeed = 6f;
             pController.gravity = 14f;
-            pController.jumpSpeed = 6f;
+            pController.jumpSpeed = 5f;
         }
 	}
 }

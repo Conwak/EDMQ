@@ -3,10 +3,13 @@ using System.Collections;
 
 public class MachineGunShoot : MonoBehaviour {
 
+    private PlayerController pController;
+    private MuzzleFlash mFlash;
+
     [HideInInspector]
-    static public int gunDamage = 18;
-    static public float fireRate = 0.1f;
-    static public float weaponRange = 100f;
+    static public int gunDamage = 9;
+    static public float fireRate = 0.15f;
+    static public float weaponRange = 229f;
     static public float hitForce = 100f;
     static public bool shooting;
     private GunAmmo gunAmmo;
@@ -24,6 +27,8 @@ public class MachineGunShoot : MonoBehaviour {
     private float nextFire;
 
 	void Start () {
+        pController = GetComponentInParent<PlayerController>();
+        mFlash = GetComponent<MuzzleFlash>();
         gunAudio = GetComponent<AudioSource>();
         cam = GetComponentInParent<Camera>();
         gunAmmo = GetComponentInParent<GunAmmo>();
@@ -31,6 +36,11 @@ public class MachineGunShoot : MonoBehaviour {
     }
 	
 	void Update () {
+        if (pController.inputX > 0 || pController.inputX < 0 || pController.inputY > 0 || pController.inputY < 0) {
+            anim.SetBool("Walking", true);
+        } else {
+            anim.SetBool("Walking", false);
+        }
         if (Input.GetButton ("Fire1") && Time.time > nextFire && gunAmmo.machineAmmo > 0) {
             Instantiate(sgShell, shellSpawn.transform.position, sgShell.transform.rotation);
             gunAmmo.machineAmmo = gunAmmo.machineAmmo - 1;
@@ -43,8 +53,9 @@ public class MachineGunShoot : MonoBehaviour {
 
             if (Physics.Raycast(rayOrigin, cam.transform.forward, out hit, weaponRange)) {
                 EnemyHealth health = hit.collider.GetComponent<EnemyHealth>();
-                if (health != null) {
+                if (hit.collider.tag == "Enemy") {
                     health.Damage(gunDamage);
+                    hit.collider.GetComponent<Enemy_Golem>().hit = true;
                 }
                 if (hit.rigidbody != null) {
                     hit.rigidbody.AddForce(-hit.normal * hitForce);
@@ -65,6 +76,8 @@ public class MachineGunShoot : MonoBehaviour {
 
     private IEnumerator ShotEffect () {
         gunAudio.Play();
+        mFlash.MuzzleShoot();
         yield return shotDuration;
+        mFlash.MuzzleOff();
     }
 }

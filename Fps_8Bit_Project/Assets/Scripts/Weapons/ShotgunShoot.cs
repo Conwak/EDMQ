@@ -3,6 +3,9 @@ using System.Collections;
 
 public class ShotgunShoot : MonoBehaviour {
 
+    private PlayerController pController;
+    private MuzzleFlash mFlash;
+
     static public float gunDamage = 4f;
     private int pellets = 6;
     static public float fireRate = 0.25f;
@@ -19,13 +22,13 @@ public class ShotgunShoot : MonoBehaviour {
     private Animator anim;
 
     private Camera cam;
-    private PlayerController pController;
     private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);
     private AudioSource gunAudio;
     private float nextFire;
 
 	void Start () {
         pController = GetComponentInParent<PlayerController>();
+        mFlash = GetComponent<MuzzleFlash>();
         gunAudio = GetComponent<AudioSource>();
         cam = GetComponentInParent<Camera>();
         gunAmmo = GetComponentInParent<GunAmmo>();
@@ -77,7 +80,9 @@ public class ShotgunShoot : MonoBehaviour {
 
     private IEnumerator ShotEffect () {
         gunAudio.Play();
+        mFlash.MuzzleShoot();
         yield return shotDuration;
+        mFlash.MuzzleOff();
         anim.SetBool("Shot", false);
     }
 }

@@ -33,4 +33,15 @@ public class PlayerStats : MonoBehaviour {
     [HideInInspector]
     public float wp_gLauncher = 1;
 
+
+    void Update () {
+        if (Input.GetButtonDown("Weapon01") && !sGun.activeSelf) {
+            sGun.SetActive(true);
+            mGun.SetActive(false);
+        }
+        else if (Input.GetButtonDown("Weapon02") && !mGun.activeSelf) {
+            mGun.SetActive(true);
+            sGun.SetActive(false);
+        }
+    }
 }

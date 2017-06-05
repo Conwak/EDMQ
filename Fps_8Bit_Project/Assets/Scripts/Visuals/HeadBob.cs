@@ -9,7 +9,7 @@ public class HeadBob : MonoBehaviour {
     public float bobbingAmount = 2.0f;
     public float mid = 0.5f;
 
-	void Update () {
+    void Update() {
         float waveSlice = 0.0f;
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
@@ -35,17 +35,5 @@ public class HeadBob : MonoBehaviour {
             localPos.y = mid;
         }
         transform.localPosition = localPos;
-    }
-
-    void OnTriggerStay (Collider other) {
-        if (other.gameObject.tag == "Water") {
-            GetComponent<ScreenOverlay>().enabled = true;
-        }
-    }
-
-    void OnTriggerExit (Collider other) {
-        if (other.gameObject.tag == "Water") {
-            GetComponent<ScreenOverlay>().enabled = false;
-        }
     }
 }

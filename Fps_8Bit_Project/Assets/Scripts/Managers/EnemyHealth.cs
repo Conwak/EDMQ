@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyHealth : MonoBehaviour {
 
     public float currentHealth = 30;
-    public int currentArmour = 25;
+    public float currentArmour = 25;
     public GameObject blood_p;
     public GameObject bloodWO_p;
 
@@ -16,8 +16,29 @@ public class EnemyHealth : MonoBehaviour {
         }
     }
 
+    void Update () {
+        if (currentHealth >= 200) {
+            currentHealth = 200;
+        }
+        else if (currentHealth <= 0) {
+            currentHealth = 0;
+        }
+        if (currentArmour >= 200) {
+            currentArmour = 200;
+        } 
+        else if (currentArmour <= 0) {
+            currentArmour = 0;
+        }
+    }
+
     public void Damage(float damageAmount) {
-        currentHealth -= damageAmount;
+        if (currentArmour > 0) {
+            currentHealth -= damageAmount / 4.8f;
+            currentArmour -= damageAmount;
+        }
+        else if (currentArmour <= 0) {
+            currentHealth -= damageAmount;
+        }
         position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
         Instantiate(bloodWO_p, position, Quaternion.identity);
         if (currentHealth <= 0 && this.gameObject.tag == "Enemy") {
