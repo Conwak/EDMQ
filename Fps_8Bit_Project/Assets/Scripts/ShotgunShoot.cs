@@ -3,10 +3,10 @@ using System.Collections;
 
 public class ShotgunShoot : MonoBehaviour {
 
-    static public int gunDamage = 24;
+    static public float gunDamage = 4f;
     private int pellets = 6;
     static public float fireRate = 0.25f;
-    static public float weaponRange = 7.8f;
+    static public float weaponRange = 78f;
     static public float hitForce = 100f;
     public LayerMask playerLayer;
     private GunAmmo gunAmmo;
@@ -19,11 +19,13 @@ public class ShotgunShoot : MonoBehaviour {
     private Animator anim;
 
     private Camera cam;
+    private PlayerController pController;
     private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);
     private AudioSource gunAudio;
     private float nextFire;
 
 	void Start () {
+        pController = GetComponentInParent<PlayerController>();
         gunAudio = GetComponent<AudioSource>();
         cam = GetComponentInParent<Camera>();
         gunAmmo = GetComponentInParent<GunAmmo>();
@@ -31,6 +33,12 @@ public class ShotgunShoot : MonoBehaviour {
     }
 	
 	void Update () {
+        if (pController.inputX > 0 || pController.inputX < 0 || pController.inputY > 0 || pController.inputY < 0) {
+            anim.SetBool("Walking", true);
+        } else {
+            anim.SetBool("Walking", false);
+        }
+
         if (Input.GetButtonDown("Fire1") && Time.time > nextFire && gunAmmo.shotgunAmmo > 0) {
             Instantiate(sgShell, shellSpawn.transform.position, sgShell.transform.rotation);
             anim.SetBool("Shot", true);
@@ -43,15 +51,17 @@ public class ShotgunShoot : MonoBehaviour {
             RaycastHit hit;  
 
             for (int i = 0; i < pellets; i++) {
-                float randomX = Random.Range(-0.2f, 0.2f);
-                float randomY = Random.Range(-0.2f, 0.2f);
+                float randomX = Random.Range(-0.5f, 0.5f);
+                float randomY = Random.Range(-0.5f, 0.5f);
                 rayOrigin.y += randomY;
                 rayOrigin.x += randomX;
 
                 if (Physics.Raycast(rayOrigin, cam.transform.forward, out hit, weaponRange, playerLayer)) {
                     EnemyHealth health = hit.collider.GetComponent<EnemyHealth>();
-                    if (health != null) {
+
+                    if (hit.collider.tag == "Enemy") {
                         health.Damage(gunDamage);
+                        hit.collider.GetComponent<Enemy_Golem>().hit = true;
                     }
                     if (hit.collider.tag != "Enemy") {
                         Instantiate(dust_p, hit.point, dust_p.transform.rotation);

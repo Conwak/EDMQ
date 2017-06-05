@@ -5,7 +5,7 @@ using UnityEngine;
 namespace UnityStandardAssets.Utility
 {
     [Serializable]
-    public class LerpControlledBob : MonoBehaviour
+    public class LerpControlledBob
     {
         public float BobDuration;
         public float BobAmount;
