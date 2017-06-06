@@ -7,6 +7,7 @@ public class ShotgunShoot : MonoBehaviour {
     private MuzzleFlash mFlash;
 
     static public float gunDamage = 4f;
+    static public float gibDamage = 6f;
     private int pellets = 6;
     static public float fireRate = 0.25f;
     static public float weaponRange = 78f;
@@ -62,8 +63,11 @@ public class ShotgunShoot : MonoBehaviour {
                 if (Physics.Raycast(rayOrigin, cam.transform.forward, out hit, weaponRange, playerLayer)) {
                     EnemyHealth health = hit.collider.GetComponent<EnemyHealth>();
 
-                    if (hit.collider.tag == "Enemy") {
+                    if (hit.collider.tag == "Enemy" && hit.distance > 4f) {
                         health.Damage(gunDamage);
+                        hit.collider.GetComponent<Enemy_Golem>().hit = true;
+                    } else if (hit.collider.tag == "Enemy" && hit.distance < 4f) {
+                        health.Damage(gibDamage);
                         hit.collider.GetComponent<Enemy_Golem>().hit = true;
                     }
                     if (hit.collider.tag != "Enemy") {

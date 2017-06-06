@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour {
 
@@ -24,6 +25,13 @@ public class PlayerStats : MonoBehaviour {
     public GameObject sGun;
     public GameObject mGun;
 
+    [Header("UI")]
+    public GameObject ui_shotgun;
+    public GameObject ui_machinegun;
+
+    private Color sgAlpha;
+    private Color mgAlpha;
+
     [HideInInspector]
     public float wp_shotgun = 1;
     [HideInInspector]
@@ -33,6 +41,15 @@ public class PlayerStats : MonoBehaviour {
     [HideInInspector]
     public float wp_gLauncher = 1;
 
+    void Start () {
+        ui_shotgun = GameObject.Find("Canvas/1./UI_Shotgun");
+        ui_machinegun = GameObject.Find("Canvas/2./UI_MachineGun");
+
+        sgAlpha = ui_shotgun.GetComponent<Image>().color;
+        mgAlpha = ui_machinegun.GetComponent<Image>().color;
+
+        mgAlpha.a = 0.5f;
+    }
 
     void Update () {
         if (Input.GetButtonDown("Weapon01") && !sGun.activeSelf) {
@@ -43,5 +60,20 @@ public class PlayerStats : MonoBehaviour {
             mGun.SetActive(true);
             sGun.SetActive(false);
         }
+
+        if (sGun.activeSelf) {
+            sgAlpha.a = 1.0f;
+        } else {
+            sgAlpha.a = 0.5f;
+        }
+
+        if (mGun.activeSelf) {
+            mgAlpha.a = 1.0f;
+        } else {
+            mgAlpha.a = 0.5f;
+        }
+
+        ui_shotgun.GetComponent<Image>().color = sgAlpha;
+        ui_machinegun.GetComponent<Image>().color = mgAlpha;
     }
 }

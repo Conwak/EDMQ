@@ -42,7 +42,7 @@ public class MachineGunShoot : MonoBehaviour {
             anim.SetBool("Walking", false);
         }
         if (Input.GetButton ("Fire1") && Time.time > nextFire && gunAmmo.machineAmmo > 0) {
-            Instantiate(sgShell, shellSpawn.transform.position, sgShell.transform.rotation);
+            Instantiate(sgShell, shellSpawn.transform.position, Quaternion.identity);
             gunAmmo.machineAmmo = gunAmmo.machineAmmo - 1;
             nextFire = Time.time + fireRate;
 

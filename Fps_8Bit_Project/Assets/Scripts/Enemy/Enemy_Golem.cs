@@ -35,11 +35,13 @@ public class Enemy_Golem : MonoBehaviour {
 
         if (waypoints.Length > 2) {
             waypointInd = Random.Range(0, waypoints.Length);
-        } else {
+            navComponent.SetDestination(waypoints[waypointInd].transform.position);
+        } else if (waypoints.Length > 1) {
+            navComponent.SetDestination(waypoints[waypointInd].transform.position);
+        } else if (waypoints.Length <= 0) {
             waypointInd = 0;
         }
-        
-        navComponent.SetDestination(waypoints[waypointInd].transform.position);
+         
     }
 	void Update () {
         if (!target) {
@@ -48,20 +50,18 @@ public class Enemy_Golem : MonoBehaviour {
 
         distance = Vector3.Distance(target.position, transform.position);
 
-        if (distance > 7f) {
-            Patrol();
-        } else {
-            navComponent.speed = 6f;
-            navComponent.stoppingDistance = 1.5f;
-        }
-
         if (distance < 7f && distance > 1.5f && !hit && !playerHit) {
+            navComponent.speed = 4.5f;
+            navComponent.stoppingDistance = 1.5f;
             anim.SetBool("PlayerFound", true);
             navComponent.SetDestination(target.position);
             navComponent.Resume();
-        } else if (distance < 1.5f && !playerHit && !hit) {
-            anim.SetBool("InRange", true);
+        } else if (distance < 1.5f && !hit) {
+            playerHit = true;
             navComponent.Stop();
+            anim.SetBool("InRange", true);
+        } else if (distance > 7f) {
+            Patrol();
         }
 
         if (hit) {
@@ -69,26 +69,6 @@ public class Enemy_Golem : MonoBehaviour {
             navComponent.Stop();
         }
 	}
-
-    void Patrol () {
-        navComponent.speed = 3f;
-        navComponent.stoppingDistance = 0f;
-
-        if (waypoints.Length == 1) {
-            navComponent.Stop();
-            anim.SetBool("PlayerFound", false);
-        }
-
-        if (waypoints.Length <= 2 && !inPos) {
-            anim.SetBool("PlayerFound", true);
-            navComponent.SetDestination(waypoints[waypointInd].transform.position);
-            navComponent.Resume();
-        }
-        if (waypoints.Length > 1 && Vector3.Distance(this.transform.position, waypoints[waypointInd].transform.position) < 0.5f) {
-            inPos = true;
-            StartCoroutine(WaypointIdle());
-        }
-    }
 
     void FindPlayer () {
         if (target)
@@ -108,17 +88,33 @@ public class Enemy_Golem : MonoBehaviour {
     void FoundResume () {
         playerHit = false;
         anim.SetBool("InRange", false);
-        if (distance < 1.5f) {
-            anim.SetBool("InRange", true);
-        }
         navComponent.Resume();
     }
 
     void HitResume () {
-        Debug.Log("HitResume");
         hit = false;
         anim.SetBool("Hit", false);
         navComponent.Resume();
+    }
+
+    void Patrol() {
+        navComponent.speed = 3f;
+        navComponent.stoppingDistance = 0f;
+
+        if (waypoints.Length == 1 || waypoints.Length == 0) {
+            navComponent.Stop();
+            anim.SetBool("PlayerFound", false);
+        }
+
+        if (waypoints.Length >= 2 && !inPos) {
+            anim.SetBool("PlayerFound", true);
+            navComponent.SetDestination(waypoints[waypointInd].transform.position);
+            navComponent.Resume();
+        }
+        if (waypoints.Length > 1 && Vector3.Distance(this.transform.position, waypoints[waypointInd].transform.position) < 0.5f) {
+            inPos = true;
+            StartCoroutine(WaypointIdle());
+        }
     }
 
     IEnumerator WaypointIdle () {
