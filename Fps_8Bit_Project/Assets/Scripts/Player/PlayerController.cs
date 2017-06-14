@@ -25,8 +25,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Mouse")]
     private float rotX;
     private float rotY;
-    public float xMouseSensitivity = 60f;
-    public float yMouseSensitivity = 60f;
+    public float mouseSensitivity = 60f;
 
     [Header("Other")]
     public float antiBunnyHop = 1;
@@ -119,8 +118,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update () {
-        rotX -= Input.GetAxis("Mouse Y") * xMouseSensitivity;
-        rotY += Input.GetAxis("Mouse X") * yMouseSensitivity;
+        rotX -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+        rotY += Input.GetAxis("Mouse X") * mouseSensitivity;
 
         if (rotX < -90)
             rotX = -90;
@@ -135,6 +134,14 @@ public class PlayerController : MonoBehaviour {
         contactPoint = hit.point;
     }
 
+    void OnTriggerEnter(Collider other) {
+        if (other.tag == "Water") {
+            AudioSource[] water = other.GetComponents<AudioSource>();
+            AudioSource enterWater = water[0];
+            enterWater.Play();
+        }
+    }
+
     void OnTriggerStay (Collider other) {
         if (other.tag == "Water") {
             isUnderwater = true;
@@ -144,6 +151,9 @@ public class PlayerController : MonoBehaviour {
     void OnTriggerExit (Collider other) {
         if (other.tag == "Water") {
             isUnderwater = false;
+            AudioSource[] water = other.GetComponents<AudioSource>();
+            AudioSource exitWater = water[1];
+            exitWater.Play();
         }
     }
 

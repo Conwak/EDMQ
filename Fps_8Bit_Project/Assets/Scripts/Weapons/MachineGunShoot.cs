@@ -12,6 +12,7 @@ public class MachineGunShoot : MonoBehaviour {
     static public float weaponRange = 229f;
     static public float hitForce = 100f;
     static public bool shooting;
+    public LayerMask decalLayer;
     private GunAmmo gunAmmo;
     public Transform gunEnd;
 
@@ -51,7 +52,7 @@ public class MachineGunShoot : MonoBehaviour {
             Vector3 rayOrigin = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
 
-            if (Physics.Raycast(rayOrigin, cam.transform.forward, out hit, weaponRange)) {
+            if (Physics.Raycast(rayOrigin, cam.transform.forward, out hit, weaponRange, decalLayer)) {
                 EnemyHealth health = hit.collider.GetComponent<EnemyHealth>();
                 if (hit.collider.tag == "Enemy") {
                     health.Damage(gunDamage);

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Door : MonoBehaviour {
 
-    private PlayerStats pStats;
+    public PlayerStats pStats;
 
     [Header("DoorProperties")]
     public GameObject door;
@@ -18,10 +18,14 @@ public class Door : MonoBehaviour {
     public AudioSource sDoorAS;
 
     void Start () {
-        pStats = GameObject.FindObjectOfType<PlayerStats>();
+        
     }
 
     void Update () {
+
+        if (!pStats) {
+            pStats = GameObject.FindObjectOfType<PlayerStats>();
+        }
 
         if (doorPressed) {
             door.transform.position = Vector3.MoveTowards(door.transform.position, endTarget.position, speed);
@@ -30,7 +34,13 @@ public class Door : MonoBehaviour {
         }
     }
 
-	void OnTriggerStay (Collider other) {
+    void OnTriggerEnter(Collider other) {
+        if (other.gameObject.tag == "Player" && this.tag == "EDoor" && pStats.rKey) {
+                doorPressed = true;
+        }
+    }
+
+    void OnTriggerStay (Collider other) {
         if (other.gameObject.tag == "Player" && this.tag == "Door") {
             if (Input.GetButton("Action")) {
                 doorPressed = true;
@@ -53,9 +63,8 @@ public class Door : MonoBehaviour {
 
     void OnTriggerExit(Collider other) {
         if (other.gameObject.tag == "Player" && this.tag == "SDoor") {
-            sDoorText.SetActive(false);
             StartCoroutine(DoorClose());
-        } else if (other.gameObject.tag == "Player") {
+        } else if (other.gameObject.tag == "Player" && this.tag != "EDoor") {
             StartCoroutine(DoorClose());
         }
     }
@@ -68,6 +77,9 @@ public class Door : MonoBehaviour {
 
     IEnumerator DoorClose () {
         yield return new WaitForSeconds(5f);
+        if (this.tag == "SDoor") {
+            sDoorText.SetActive(false);
+        }
         doorPressed = false;
     }
 }

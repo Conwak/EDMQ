@@ -29,6 +29,11 @@ public class PlayerCollision : MonoBehaviour {
             other.gameObject.GetComponent<AudioSource>().Play();
             Destroy(other.gameObject, 0.2f);
         }
+        if (other.gameObject.tag == "BlueArmour") {
+            pHealth.currentArmour = pHealth.currentArmour + 125;
+            other.gameObject.GetComponent<AudioSource>().Play();
+            Destroy(other.gameObject, 0.2f);
+        }
         if (other.gameObject.tag == "MGAmmo") {
             gAmmo.machineAmmo = gAmmo.machineAmmo + 25;
             other.gameObject.GetComponent<AudioSource>().Play();
@@ -36,6 +41,18 @@ public class PlayerCollision : MonoBehaviour {
         }
         if (other.gameObject.tag == "SGAmmo") {
             gAmmo.shotgunAmmo = gAmmo.shotgunAmmo + 20;
+            other.gameObject.GetComponent<AudioSource>().Play();
+            Destroy(other.gameObject, 0.2f);
+        }
+        if (other.gameObject.name == "MG_Pickup") {
+            pStats.mGunFound = true;
+            gAmmo.machineAmmo = gAmmo.machineAmmo + 20;
+            other.gameObject.GetComponent<AudioSource>().Play();
+            Destroy(other.gameObject, 0.2f);
+        }
+        if (other.gameObject.name == "LG_Pickup") {
+            pStats.lGunFound = true;
+            gAmmo.launcherAmmo = gAmmo.launcherAmmo + 5;
             other.gameObject.GetComponent<AudioSource>().Play();
             Destroy(other.gameObject, 0.2f);
         }

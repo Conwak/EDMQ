@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour {
 
+    private Pause pause;
+
     [HideInInspector]
     public float shade = 0;
 
@@ -24,13 +26,21 @@ public class PlayerStats : MonoBehaviour {
     [Header("Weapons")]
     public GameObject sGun;
     public GameObject mGun;
+    public GameObject lGun;
+
+    [HideInInspector]
+    public bool mGunFound;
+    [HideInInspector]
+    public bool lGunFound;
 
     [Header("UI")]
     public GameObject ui_shotgun;
     public GameObject ui_machinegun;
+    public GameObject ui_launcher;
 
     private Color sgAlpha;
     private Color mgAlpha;
+    private Color lgAlpha;
 
     [HideInInspector]
     public float wp_shotgun = 1;
@@ -42,22 +52,33 @@ public class PlayerStats : MonoBehaviour {
     public float wp_gLauncher = 1;
 
     void Start () {
+        pause = GameObject.FindObjectOfType<Pause>();
         ui_shotgun = GameObject.Find("Canvas/1./UI_Shotgun");
         ui_machinegun = GameObject.Find("Canvas/2./UI_MachineGun");
+        ui_launcher = GameObject.Find("Canvas/3./UI_GLauncher");
 
         sgAlpha = ui_shotgun.GetComponent<Image>().color;
         mgAlpha = ui_machinegun.GetComponent<Image>().color;
+        lgAlpha = ui_launcher.GetComponent<Image>().color;
 
         mgAlpha.a = 0.5f;
+        lgAlpha.a = 0.5f;
     }
 
     void Update () {
-        if (Input.GetButtonDown("Weapon01") && !sGun.activeSelf) {
+        if (Input.GetButtonDown("Weapon01") && !sGun.activeSelf && !pause.paused) {
             sGun.SetActive(true);
             mGun.SetActive(false);
+            lGun.SetActive(false);
         }
-        else if (Input.GetButtonDown("Weapon02") && !mGun.activeSelf) {
+        else if (Input.GetButtonDown("Weapon02") && !mGun.activeSelf && !pause.paused && mGunFound) {
             mGun.SetActive(true);
+            sGun.SetActive(false);
+            lGun.SetActive(false);
+        } 
+        else if (Input.GetButtonDown("Weapon03") && !lGun.activeSelf && !pause.paused && lGunFound) {
+            lGun.SetActive(true);
+            mGun.SetActive(false);
             sGun.SetActive(false);
         }
 
@@ -73,7 +94,14 @@ public class PlayerStats : MonoBehaviour {
             mgAlpha.a = 0.5f;
         }
 
+        if (lGun.activeSelf) {
+            lgAlpha.a = 1.0f;
+        } else {
+            lgAlpha.a = 0.5f;
+        }
+
         ui_shotgun.GetComponent<Image>().color = sgAlpha;
         ui_machinegun.GetComponent<Image>().color = mgAlpha;
+        ui_launcher.GetComponent<Image>().color = lgAlpha;
     }
 }

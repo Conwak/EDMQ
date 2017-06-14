@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Enemy_Golem : MonoBehaviour {
 
@@ -18,8 +19,11 @@ public class Enemy_Golem : MonoBehaviour {
     public GameObject[] waypoints;
     public int waypointInd = 0;
     private bool inPos = false;
+
+    private Scene scene;
     
     void Start () {
+        scene = SceneManager.GetActiveScene();
         navComponent = gameObject.GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
 
@@ -44,30 +48,32 @@ public class Enemy_Golem : MonoBehaviour {
          
     }
 	void Update () {
-        if (!target) {
+        if (!target && scene.name != "MainMenu") {
             FindPlayer();
         }
+        if (target) {
+            distance = Vector3.Distance(target.position, transform.position);
+            if (distance < 7f && distance > 1.5f && !hit && !playerHit) {
+                navComponent.speed = 4.5f;
+                navComponent.stoppingDistance = 1.5f;
+                anim.SetBool("PlayerFound", true);
+                navComponent.SetDestination(target.position);
+                navComponent.Resume();
+            } else if (distance < 1.5f && !hit) {
+                playerHit = true;
+                navComponent.Stop();
+                anim.SetBool("InRange", true);
+            } else if (distance > 7f) {
+                Patrol();
+            }
 
-        distance = Vector3.Distance(target.position, transform.position);
-
-        if (distance < 7f && distance > 1.5f && !hit && !playerHit) {
-            navComponent.speed = 4.5f;
-            navComponent.stoppingDistance = 1.5f;
-            anim.SetBool("PlayerFound", true);
-            navComponent.SetDestination(target.position);
-            navComponent.Resume();
-        } else if (distance < 1.5f && !hit) {
-            playerHit = true;
-            navComponent.Stop();
-            anim.SetBool("InRange", true);
-        } else if (distance > 7f) {
-            Patrol();
+            if (hit) {
+                anim.SetBool("Hit", true);
+                navComponent.Stop();
+            }
         }
 
-        if (hit) {
-            anim.SetBool("Hit", true);
-            navComponent.Stop();
-        }
+        
 	}
 
     void FindPlayer () {

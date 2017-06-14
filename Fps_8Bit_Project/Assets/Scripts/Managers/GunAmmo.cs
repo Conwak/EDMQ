@@ -7,6 +7,7 @@ public class GunAmmo : MonoBehaviour {
     [Header("Ammo")]
     public int shotgunAmmo = 25;
     public int machineAmmo = 25;
+    public int launcherAmmo = 10;
     private EnemyHealth playerHealth;
     private PlayerStats playerStats;
 
@@ -38,6 +39,9 @@ public class GunAmmo : MonoBehaviour {
         }
         else if (playerStats.mGun.activeSelf == true) {
             ammoText.text = machineAmmo.ToString("0");
+        }
+        else if (playerStats.lGun.activeSelf == true) {
+            ammoText.text = launcherAmmo.ToString("0");
         }
         healthText.text = playerHealth.currentHealth.ToString("0");
         armourText.text = playerHealth.currentArmour.ToString("0");

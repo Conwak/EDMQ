@@ -12,7 +12,7 @@ public class ShotgunShoot : MonoBehaviour {
     static public float fireRate = 0.25f;
     static public float weaponRange = 78f;
     static public float hitForce = 100f;
-    public LayerMask playerLayer;
+    public LayerMask decalLayer;
     private GunAmmo gunAmmo;
     public Transform gunEnd;
 
@@ -60,7 +60,7 @@ public class ShotgunShoot : MonoBehaviour {
                 rayOrigin.y += randomY;
                 rayOrigin.x += randomX;
 
-                if (Physics.Raycast(rayOrigin, cam.transform.forward, out hit, weaponRange, playerLayer)) {
+                if (Physics.Raycast(rayOrigin, cam.transform.forward, out hit, weaponRange, decalLayer)) {
                     EnemyHealth health = hit.collider.GetComponent<EnemyHealth>();
 
                     if (hit.collider.tag == "Enemy" && hit.distance > 4f) {

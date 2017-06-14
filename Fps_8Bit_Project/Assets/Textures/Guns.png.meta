@@ -1,11 +1,12 @@
 fileFormatVersion: 2
-guid: e9118aaa6ca64694ab7dac892f3e422c
-timeCreated: 1496765003
+guid: 5e2d9f47e96ef3b42b0140a5009769c1
+timeCreated: 1497369290
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: UI_Shotgun
     21300002: UI_MachineGun
+    21300004: UI_GLauncher
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -58,9 +59,9 @@ TextureImporter:
       name: UI_Shotgun
       rect:
         serializedVersion: 2
-        x: 4
+        x: 5
         y: 223
-        width: 112
+        width: 111
         height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -74,7 +75,20 @@ TextureImporter:
         x: 1
         y: 185
         width: 127
-        height: 36
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: UI_GLauncher
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 154
+        width: 110
+        height: 27
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
