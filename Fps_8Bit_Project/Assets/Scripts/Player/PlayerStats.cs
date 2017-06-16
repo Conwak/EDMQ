@@ -11,6 +11,11 @@ public class PlayerStats : MonoBehaviour {
 
     [Header("Keys")]
     public bool rKey; public bool bKey;
+    public bool levelFinished;
+    public int levelKills;
+    public int levelSecrets;
+    public GameObject[] currentEnemies;
+    public GameObject[] currentSecrets;
 
     private float vitality = 1;
     private float strength = 1;
@@ -37,6 +42,7 @@ public class PlayerStats : MonoBehaviour {
     public GameObject ui_shotgun;
     public GameObject ui_machinegun;
     public GameObject ui_launcher;
+    public Image ui_rKey;
 
     private Color sgAlpha;
     private Color mgAlpha;
@@ -56,6 +62,7 @@ public class PlayerStats : MonoBehaviour {
         ui_shotgun = GameObject.Find("Canvas/1./UI_Shotgun");
         ui_machinegun = GameObject.Find("Canvas/2./UI_MachineGun");
         ui_launcher = GameObject.Find("Canvas/3./UI_GLauncher");
+        ui_rKey = GameObject.Find("Canvas/RKey").GetComponent<Image>();
 
         sgAlpha = ui_shotgun.GetComponent<Image>().color;
         mgAlpha = ui_machinegun.GetComponent<Image>().color;
@@ -63,6 +70,10 @@ public class PlayerStats : MonoBehaviour {
 
         mgAlpha.a = 0.5f;
         lgAlpha.a = 0.5f;
+
+        currentEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        currentSecrets = GameObject.FindGameObjectsWithTag("SDoor");
+
     }
 
     void Update () {
@@ -80,6 +91,10 @@ public class PlayerStats : MonoBehaviour {
             lGun.SetActive(true);
             mGun.SetActive(false);
             sGun.SetActive(false);
+        }
+
+        if (rKey) {
+            ui_rKey.enabled = true;
         }
 
         if (sGun.activeSelf) {
@@ -103,5 +118,6 @@ public class PlayerStats : MonoBehaviour {
         ui_shotgun.GetComponent<Image>().color = sgAlpha;
         ui_machinegun.GetComponent<Image>().color = mgAlpha;
         ui_launcher.GetComponent<Image>().color = lgAlpha;
+
     }
 }

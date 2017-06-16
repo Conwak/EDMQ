@@ -4,11 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class Enemy_Golem : MonoBehaviour {
 
+    private Pause pause;
+
     private int damage = 16;
     private bool playerHit;
     [HideInInspector]
     public bool hit;
-    public static float attackDistance = 1.0f;
+    public float attackDistance = 1.0f;
     private float distance;
     private Transform target;
     private NavMeshAgent navComponent;
@@ -26,6 +28,7 @@ public class Enemy_Golem : MonoBehaviour {
         scene = SceneManager.GetActiveScene();
         navComponent = gameObject.GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        pause = GameObject.FindObjectOfType<Pause>();
 
         if (gameObject.name == "Grunt (1)") {
             waypoints = GameObject.FindGameObjectsWithTag("G1_T");
@@ -63,7 +66,7 @@ public class Enemy_Golem : MonoBehaviour {
                 playerHit = true;
                 navComponent.Stop();
                 anim.SetBool("InRange", true);
-            } else if (distance > 7f) {
+            } else if (distance > 7f && !pause.paused) {
                 Patrol();
             }
 

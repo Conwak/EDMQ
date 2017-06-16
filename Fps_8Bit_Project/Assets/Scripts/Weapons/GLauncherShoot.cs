@@ -5,9 +5,10 @@ public class GLauncherShoot : MonoBehaviour {
 
     private PlayerController pController;
     private MuzzleFlash mFlash;
+    private Pause pause;
 
-    static public float fireRate = 0.25f;
-    static public float hitForce = 2f;
+    public float fireRate = 0.25f;
+    public float hitForce = 2f;
     public LayerMask playerLayer;
     private GunAmmo gunAmmo;
     public Transform gunEnd;
@@ -28,6 +29,7 @@ public class GLauncherShoot : MonoBehaviour {
         gunAudio = GetComponent<AudioSource>();
         gunAmmo = GetComponentInParent<GunAmmo>();
         anim = GetComponent<Animator>();
+        pause = GameObject.FindObjectOfType<Pause>();
     }
 
     void Update() {
@@ -36,7 +38,7 @@ public class GLauncherShoot : MonoBehaviour {
         } else {
             anim.SetBool("Walking", false);
         }
-        if (Input.GetButtonDown("Fire1") && Time.time > nextFire && gunAmmo.launcherAmmo > 0) {
+        if (Input.GetButtonDown("Fire1") && Time.time > nextFire && gunAmmo.launcherAmmo > 0 && !pause.paused) {
             Shoot();
         }
     }

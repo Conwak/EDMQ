@@ -26,20 +26,23 @@ public class Pause : MonoBehaviour {
     public GameObject pauseObjs;
 
     void Start () {
-        playerCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        pixel = playerCam.GetComponent<Pixelation>();
-        playerController = GameObject.FindObjectOfType<PlayerController>();
-
         fovText = fovSlider.GetComponentInChildren<Text>();
         pixelText = pixelSlider.GetComponentInChildren<Text>();
         sensText = sensitivitySlider.GetComponentInChildren<Text>();
 
-        pixelSlider.value = 465;
-        fovSlider.value = 90;
-        sensitivitySlider.value = 8;
+        
     }
 
     void Update() {
+        if (!playerCam) {
+            playerCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+            pixel = playerCam.GetComponent<Pixelation>();
+            playerController = GameObject.FindObjectOfType<PlayerController>();
+            pixelSlider.value = 465;
+            fovSlider.value = 90;
+            sensitivitySlider.value = 7;
+            pixelToggle.isOn = true;
+        }
         if (paused) {
             pixel.BlockCount = pixelSlider.value;
             playerCam.fieldOfView = fovSlider.value;
@@ -52,16 +55,19 @@ public class Pause : MonoBehaviour {
             if (Time.timeScale == 1.0f) {
                 Time.timeScale = 0;
                 paused = true;
+                playerController.enabled = false;
                 pauseObjs.SetActive(true);
                 pixelSlider.enabled = true;
-                playerController.enabled = false;
+                sensitivitySlider.enabled = true;
                 weapons = GameObject.FindGameObjectsWithTag("Weapon");
                 foreach (GameObject obj in weapons) {
                     if (obj.name == "Shotgun") {
                         obj.GetComponent<ShotgunShoot>().enabled = false;
                     } else if (obj.name == "MachineGun") {
                         obj.GetComponent<MachineGunShoot>().enabled = false;
-                    }
+                    } else if (obj.name == "GLauncher") {
+                        obj.GetComponent<GLauncherShoot>().enabled = false;
+                    } 
                 }
             } else {
                 Time.timeScale = 1.0f;
@@ -74,6 +80,8 @@ public class Pause : MonoBehaviour {
                         obj.GetComponent<ShotgunShoot>().enabled = true;
                     } else if (obj.name == "MachineGun") {
                         obj.GetComponent<MachineGunShoot>().enabled = true;
+                    } else if (obj.name == "GLauncher") {
+                        obj.GetComponent<GLauncherShoot>().enabled = true;
                     }
                 }
             }
@@ -88,6 +96,6 @@ public class Pause : MonoBehaviour {
     }
 
     public void MainMenu () {
-        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        SceneManager.LoadScene("MainMenu");
     }
 }

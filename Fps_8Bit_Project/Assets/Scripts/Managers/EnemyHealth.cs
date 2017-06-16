@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EnemyHealth : MonoBehaviour {
 
+    private PlayerStats pStats;
+
     public float currentHealth = 30;
     public float currentArmour = 25;
     public GameObject blood_p;
@@ -17,6 +19,10 @@ public class EnemyHealth : MonoBehaviour {
     }
 
     void Update () {
+        if (!pStats) {
+            pStats = GameObject.FindObjectOfType<PlayerStats>();
+        }
+
         if (currentHealth >= 200) {
             currentHealth = 200;
         }
@@ -45,6 +51,7 @@ public class EnemyHealth : MonoBehaviour {
             Instantiate(blood_p, position, Quaternion.identity);
             gameObject.SetActive(false);
             if (gameObject.tag == "Enemy") {
+                pStats.levelKills += 1;
                 Destroy(gameObject, 1);
             }
             currentHealth = 0;

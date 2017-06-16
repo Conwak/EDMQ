@@ -1,12 +1,13 @@
 fileFormatVersion: 2
 guid: 5e2d9f47e96ef3b42b0140a5009769c1
-timeCreated: 1497369290
+timeCreated: 1497541993
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: UI_Shotgun
     21300002: UI_MachineGun
     21300004: UI_GLauncher
+    21300006: UI_Key
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -89,6 +90,19 @@ TextureImporter:
         y: 154
         width: 110
         height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: UI_Key
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 108
+        width: 21
+        height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

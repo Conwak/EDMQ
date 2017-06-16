@@ -56,5 +56,8 @@ public class PlayerCollision : MonoBehaviour {
             other.gameObject.GetComponent<AudioSource>().Play();
             Destroy(other.gameObject, 0.2f);
         }
+        if (other.gameObject.name == "EndLevelToken") {
+            pStats.levelFinished = true;
+        }
     }
 }

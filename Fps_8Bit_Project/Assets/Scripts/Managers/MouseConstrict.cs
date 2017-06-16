@@ -10,10 +10,9 @@ public class MouseConstrict : MonoBehaviour {
 	}
 	
 	void Update () {
-        if (pause.paused == true) {
+        if (pause.paused) {
             Cursor.lockState = CursorLockMode.None;
-        } 
-        else if (pause.paused == false) {
+        } else {
             Cursor.lockState = CursorLockMode.Locked;
         }
 	}

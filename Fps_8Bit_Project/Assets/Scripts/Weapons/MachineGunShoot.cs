@@ -5,13 +5,14 @@ public class MachineGunShoot : MonoBehaviour {
 
     private PlayerController pController;
     private MuzzleFlash mFlash;
+    private Pause pause;
 
     [HideInInspector]
-    static public int gunDamage = 9;
-    static public float fireRate = 0.15f;
-    static public float weaponRange = 229f;
-    static public float hitForce = 100f;
-    static public bool shooting;
+    public int gunDamage = 9;
+    public float fireRate = 0.15f;
+    public float weaponRange = 229f;
+    public float hitForce = 100f;
+    public bool shooting;
     public LayerMask decalLayer;
     private GunAmmo gunAmmo;
     public Transform gunEnd;
@@ -34,6 +35,7 @@ public class MachineGunShoot : MonoBehaviour {
         cam = GetComponentInParent<Camera>();
         gunAmmo = GetComponentInParent<GunAmmo>();
         anim = GetComponent<Animator>();
+        pause = GameObject.FindObjectOfType<Pause>();
     }
 	
 	void Update () {
@@ -42,7 +44,7 @@ public class MachineGunShoot : MonoBehaviour {
         } else {
             anim.SetBool("Walking", false);
         }
-        if (Input.GetButton ("Fire1") && Time.time > nextFire && gunAmmo.machineAmmo > 0) {
+        if (Input.GetButton ("Fire1") && Time.time > nextFire && gunAmmo.machineAmmo > 0 && !pause.paused) {
             Instantiate(sgShell, shellSpawn.transform.position, Quaternion.identity);
             gunAmmo.machineAmmo = gunAmmo.machineAmmo - 1;
             nextFire = Time.time + fireRate;

@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour {
 
 	void Start () {
-        
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.None;
 	}
 	
 	void Update () {
@@ -13,6 +14,7 @@ public class MainMenu : MonoBehaviour {
 	}
 
     public void PlayGame () {
+        SceneManager.UnloadScene("MainMenu");
         SceneManager.LoadScene("E1", LoadSceneMode.Single);
     }
 

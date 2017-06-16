@@ -12,6 +12,7 @@ public class Door : MonoBehaviour {
     public float speed = 0.05f;
     public AudioSource doorAS;
     private bool doorPressed;
+    private bool sDoorPressed;
 
     [Header("SecretProperties")]
     public GameObject sDoorText;
@@ -47,11 +48,16 @@ public class Door : MonoBehaviour {
                 doorAS.Play();
             }
         } else if (other.gameObject.tag == "Player" && this.tag == "SDoor") {
-            if (Input.GetButton("Action")) {
+            if (Input.GetButton("Action") && !sDoorPressed) {
                 doorPressed = true;
+                sDoorPressed = true;
+                pStats.levelSecrets += 1;
                 sDoorText.SetActive(true);
                 doorAS.Play();
                 sDoorAS.Play();
+            } else if (Input.GetButton("Action") && sDoorPressed) {
+                doorPressed = true;
+                doorAS.Play();
             }
         } else if (other.gameObject.tag == "Player" && this.tag == "RDoor") {
             if (Input.GetButton("Action") && pStats.rKey == true) {
