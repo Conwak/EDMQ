@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using Assets.Pixelation.Scripts;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class Pause : MonoBehaviour {
 
@@ -11,26 +12,42 @@ public class Pause : MonoBehaviour {
     private PlayerController playerController;
     private GameObject[] weapons;
     private Camera playerCam;
+    [SerializeField]
     public Pixelation pixel;
 
+    [SerializeField]
     public Slider pixelSlider;
+    [SerializeField]
     public Slider fovSlider;
+    [SerializeField]
     public Slider sensitivitySlider;
+    [SerializeField]
+    public Slider audioSlider;
 
+    [SerializeField]
     public Toggle pixelToggle;
 
     private Text fovText;
     private Text pixelText;
     private Text sensText;
 
+    [SerializeField]
     public GameObject pauseObjs;
+
+    [SerializeField]
+    public AudioMixer mixer;
+    public string parameterName = "MasterVolume";
 
     void Start () {
         fovText = fovSlider.GetComponentInChildren<Text>();
         pixelText = pixelSlider.GetComponentInChildren<Text>();
         sensText = sensitivitySlider.GetComponentInChildren<Text>();
 
-        
+    }
+
+    public void ChangeVolume(float newVolume) {
+        PlayerPrefs.SetFloat("volume", newVolume);
+        AudioListener.volume = PlayerPrefs.GetFloat("volume");
     }
 
     void Update() {
@@ -38,6 +55,7 @@ public class Pause : MonoBehaviour {
             playerCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
             pixel = playerCam.GetComponent<Pixelation>();
             playerController = GameObject.FindObjectOfType<PlayerController>();
+
             pixelSlider.value = 465;
             fovSlider.value = 90;
             sensitivitySlider.value = 7;

@@ -9,8 +9,12 @@ public class SpawnPlayer : MonoBehaviour {
     public GameObject player;
     public Transform spawn;
 
+    [SerializeField]
+    private AudioSource spawnAS;
+
 	void Start () {
-        Instantiate(player, spawn.position, Quaternion.identity);	
+        Instantiate(player, spawn.position, Quaternion.identity);
+        spawnAS.Play();
 	}
 
     void Update() {
@@ -22,6 +26,7 @@ public class SpawnPlayer : MonoBehaviour {
         if (playerHealth.currentHealth <= 0) {
             Destroy(iPlayer);
             Instantiate(player, spawn.position, Quaternion.identity);
+            spawnAS.Play();
         }
     }
 

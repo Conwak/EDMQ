@@ -5,6 +5,9 @@ public class EnemyHealth : MonoBehaviour {
 
     private PlayerStats pStats;
 
+    [SerializeField]
+    private AudioSource dead;
+
     public float currentHealth = 30;
     public float currentArmour = 25;
     public GameObject blood_p;
@@ -48,6 +51,7 @@ public class EnemyHealth : MonoBehaviour {
         position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
         Instantiate(bloodWO_p, position, Quaternion.identity);
         if (currentHealth <= 0 && this.gameObject.tag == "Enemy") {
+            dead.Play();
             Instantiate(blood_p, position, Quaternion.identity);
             gameObject.SetActive(false);
             if (gameObject.tag == "Enemy") {

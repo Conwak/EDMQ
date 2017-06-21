@@ -68,4 +68,15 @@ public class Grenade : MonoBehaviour {
             i++;
         }
     }
+
+    void OnCollisionEnter(Collision other) {
+        if (other.gameObject.tag == "Enemy") {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            explosionAS.Play();
+            hasExploded = true;
+            Explosion(center: transform.position, radius: 5f, enemy: lmEnemy);
+            bool obj = GetComponent<Renderer>().enabled = false;
+            Destroy(gameObject, 1f);
+        }    
+    }
 }

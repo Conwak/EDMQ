@@ -6,6 +6,9 @@ public class Enemy_Golem : MonoBehaviour {
 
     private Pause pause;
 
+    [SerializeField]
+    private AudioSource playerFound;
+
     private int damage = 16;
     private bool playerHit;
     [HideInInspector]
@@ -57,6 +60,7 @@ public class Enemy_Golem : MonoBehaviour {
         if (target) {
             distance = Vector3.Distance(target.position, transform.position);
             if (distance < 7f && distance > 1.5f && !hit && !playerHit) {
+                playerFound.Play();
                 navComponent.speed = 4.5f;
                 navComponent.stoppingDistance = 1.5f;
                 anim.SetBool("PlayerFound", true);
@@ -110,12 +114,12 @@ public class Enemy_Golem : MonoBehaviour {
         navComponent.speed = 3f;
         navComponent.stoppingDistance = 0f;
 
-        if (waypoints.Length == 1 || waypoints.Length == 0) {
+        if (waypoints.Length == 0) {
             navComponent.Stop();
             anim.SetBool("PlayerFound", false);
         }
 
-        if (waypoints.Length >= 2 && !inPos) {
+        if (waypoints.Length >= 1 && !inPos) {
             anim.SetBool("PlayerFound", true);
             navComponent.SetDestination(waypoints[waypointInd].transform.position);
             navComponent.Resume();

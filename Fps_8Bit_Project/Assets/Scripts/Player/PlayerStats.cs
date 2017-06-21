@@ -115,6 +115,22 @@ public class PlayerStats : MonoBehaviour {
             lgAlpha.a = 0.5f;
         }
 
+        if (!mGunFound) {
+            mgAlpha.g = 0;
+            mgAlpha.b = 0;
+        } else {
+            mgAlpha.g = 255;
+            mgAlpha.b = 255;
+        }
+
+        if (!lGunFound) {
+            lgAlpha.g = 0;
+            lgAlpha.b = 0;
+        } else {
+            lgAlpha.g = 255;
+            lgAlpha.b = 255;
+        }
+
         ui_shotgun.GetComponent<Image>().color = sgAlpha;
         ui_machinegun.GetComponent<Image>().color = mgAlpha;
         ui_launcher.GetComponent<Image>().color = lgAlpha;
